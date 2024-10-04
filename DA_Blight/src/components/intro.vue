@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p v-if="visibleParagraphs[0]">어떻게, 어떻게 된 거지?</p>
-    <p v-if="visibleParagraphs[1]">머리가 너무 아프다.</p>
+    <p v-if="visibleParagraphs[0]">머리가 너무 아프다.</p>
+    <p v-if="visibleParagraphs[1]">어떻게, 어떻게 된 거지?</p>
     <p v-if="visibleParagraphs[2]">여긴 어디지?</p>
     <p v-if="visibleParagraphs[3]">나는, 누구지?</p>
   </div>

@@ -1,18 +1,29 @@
 <template>
   <div>
     <div class="page">
-      <div :class="{ colored: count >= 1 }">1</div>
-      <div :class="{ colored: count >= 2 }">2</div>
-      <div :class="{ colored: count >= 3 }">3</div>
-
       <!-- 각 버튼을 클릭할 때마다 disabled 상태 관리 -->
-      <button @click="incrementCount(0)" :disabled="buttonsClicked[0]">Click Me!</button>
-      <button @click="incrementCount(1)" :disabled="buttonsClicked[1]">Click Me!</button>
-      <button @click="incrementCount(2)" :disabled="buttonsClicked[2]">Click Me!</button>
-
-      <button v-if="showBtn" @click="goNext">-></button>
+      <button class="page-3-1" @click="incrementCount(0)" :disabled="buttonsClicked[0]">
+        Click Me!
+      </button>
+      <button class="page-3-2" @click="incrementCount(1)" :disabled="buttonsClicked[1]">
+        Click Me!
+      </button>
+      <button class="page-3-3" @click="incrementCount(2)" :disabled="buttonsClicked[2]">
+        Click Me!
+      </button>
+    </div>
+    <div class="collect">
+      <div class="collect-box">
+        <div :class="{ colored: count >= 1 }">1</div>
+        <div :class="{ colored: count >= 2 }">2</div>
+        <div :class="{ colored: count >= 3 }">3</div>
+      </div>
+      <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
     </div>
   </div>
+  <div class="Popup-3-1"></div>
+  <div class="Popup-3-2"></div>
+  <div class="Popup-3-3"></div>
 </template>
 
 <script>
