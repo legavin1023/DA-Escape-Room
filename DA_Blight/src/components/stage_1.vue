@@ -1,35 +1,25 @@
 <template>
   <div class="page map1">
-    <!-- <button class="page-1-1" @click="openModal(1)" :disabled="buttonsClicked[0]"> -->
-    <button class="page-1-1" @click="openModal(1)"></button>
-    <button class="page-1-2" @click="openModal(2)"></button>
-    <button class="page-1-3" @click="openModal(3)"></button>
+    <button
+      class="page-1-1"
+      @click="
+        openModal(1),
+          displayText(
+            '평화로운 때가 되면 사람들은 죽일 동물을 찾아 헤맨다. 그 시기에 사냥당한 사슴의 머리는… 왠지 기묘하다.'
+          )
+      "
+    ></button>
+    <button
+      class="page-1-2"
+      @click="openModal(2), displayText('모닥불에서 열기가 전해진다.')"
+    ></button>
+    <button
+      class="page-1-3"
+      @click="openModal(3), displayText('차곡차곡 정리된 템플러 갑옷이다.')"
+    ></button>
     <div class="narration">
       <div class="narration-border">
-        <p v-if="activeModal === null">모닥불이 실내의 찬 공기를 데우고 있다.</p>
-        <p v-else-if="activeModal === 1">
-          평화로운 때가 되면 사람들은 죽일 동물을 찾아 헤맨다. 그 시기에 사냥당한 사슴의 머리는…
-          왠지 기묘하다.
-        </p>
-        <p v-else-if="activeModal === 2 && !activeNestedModal2">모닥불에서 열기가 전해진다.</p>
-        <p v-else-if="activeNestedModal2">
-          "대재앙, 다크스폰… 누군가 쓴 일지 같다. 많이 연구한 듯 빼곡하게 적혀있었던 듯 하지만
-          대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면
-          누군가에게 들키지 않기 위해?"
-        </p>
-        <p v-else-if="activeModal === 3 && !activeNestedModal3">차곡차곡 정리된 템플러 갑옷이다.</p>
-        <p v-else-if="activeNestedModal3">
-          "그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다"
-        </p>
-        <p v-else-if="narrationText === 'candleText'">
-          모닥불에 비하면 차가울 정도로 약한 촛불이다.
-        </p>
-        <p v-else-if="narrationText === 'boneText'">
-          뼈다귀. 마바리 친구는 이걸 두고 어디로 간거지?
-        </p>
-        <p v-else-if="narrationText === 'lockText'">자물쇠를 따는 재주는 없어.</p>
-        <p v-else-if="narrationText === 'arrowText'">실내에서 활 연습이라도 했던가?</p>
-        <p v-else-if="narrationText === 'frameText'">어딘가 낯이 익은 그림들이다.</p>
+        <p>{{ displayedText || defaultText }}</p>
       </div>
     </div>
     <div class="collect">
@@ -39,20 +29,63 @@
     </div>
     <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
     <div class="effect">
-      <div class="bonfire"></div>
+      <!-- 모닥불 -->
+      <div
+        class="bonfire"
+        @click="displayText('모닥불이 실내의 찬 공기를 데우고 있다.', true)"
+        :class="{ disabled: isTyping }"
+      ></div>
+
+      <!-- 빛 1 -->
       <div :class="{ light_1: true }"></div>
+
+      <!-- 빛 2 -->
       <div :class="{ light_2: true }"></div>
-      <div class="light_btn_1" @click="click_light_btn_1()"></div>
-      <div class="light_btn_2" @click="click_light_btn_2()"></div>
 
-      <div class="bone" @click="click_bone_btn()"></div>
+      <!-- 빛 버튼 1 -->
+      <div
+        class="light_btn_1"
+        @click="displayText(' 모닥불에 비하면 차가울 정도로 약한 촛불이다.'), click_light_btn_1()"
+        :class="{ disabled: isTyping }"
+      ></div>
 
-      <div class="frame_light" @click="click_frame_light_btn()"></div>
+      <!-- 빛 버튼 2 -->
+      <div
+        class="light_btn_2"
+        @click="displayText(' 모닥불에 비하면 차가울 정도로 약한 촛불이다.'), click_light_btn_2()"
+        :class="{ disabled: isTyping }"
+      ></div>
 
-      <div class="lock_btn" @click="click_lock_btn()"></div>
+      <!-- 뼈 -->
+      <div
+        class="bone"
+        @click="displayText('뼈다귀. 마바리 친구는 이걸 두고 어디로 간거지?'), click_bone_btn()"
+        :class="{ disabled: isTyping }"
+      ></div>
+
+      <!-- 액자 -->
+      <div
+        class="frame_light"
+        @click="displayText('어딘가 낯이 익은 그림들이다.'), click_frame_light_btn()"
+        :class="{ disabled: isTyping }"
+      ></div>
+
+      <!-- 자물쇠 버튼 -->
+      <div
+        class="lock_btn"
+        @click="displayText('자물쇠를 따는 재주는 없어.'), click_lock_btn()"
+        :class="{ disabled: isTyping }"
+      ></div>
+
+      <!-- 자물쇠 -->
       <div class="lock"></div>
 
-      <div class="arrow" @click="click_arrow_btn()"></div>
+      <!-- 화살 -->
+      <div
+        class="arrow"
+        @click="displayText('실내에서 활 연습이라도 했던가?'), click_arrow_btn()"
+        :class="{ disabled: isTyping }"
+      ></div>
     </div>
   </div>
 
@@ -66,7 +99,14 @@
   <!-- 두 번째 모달 -->
   <div v-if="activeModal === 2" class="modal">
     <div class="modal-content modal_1_2_1">
-      <button @click="openNestedModal(2)"></button>
+      <button
+        @click="
+          openNestedModal(2),
+            displayText(
+              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 많이 연구한 듯 빼곡하게 적혀있었던 듯 하지만 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
+            )
+        "
+      ></button>
       <span class="close" @click="closeModal">×</span>
     </div>
   </div>
@@ -81,7 +121,14 @@
   <!-- 세 번째 모달 -->
   <div v-if="activeModal === 3" class="modal">
     <div class="modal-content modal_1_3_1">
-      <button @click="openNestedModal(3)"></button>
+      <button
+        @click="
+          openNestedModal(3),
+            displayText(
+              '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.'
+            )
+        "
+      ></button>
       <span class="close" @click="closeModal">×</span>
     </div>
   </div>
@@ -98,7 +145,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import offImage from '@/assets/image/off.png'
@@ -130,7 +177,63 @@ export default {
     const boneSound = ref(null)
     const lightSound = ref(null)
     const bonfireSound = ref(null)
+    //---------------------------------------------
+    const defaultText = ref('모닥불이 실내의 찬 공기를 데우고 있다.')
+    const fullText = ref('')
+    const displayedText = ref('')
+    let typingInterval = null
+    let resetTimeout = null
+    const isTyping = ref(false)
 
+    onMounted(() => {
+      displayText(defaultText.value, false) // 한 글자씩 타이핑 애니메이션 시작
+    })
+
+    // 타이핑 애니메이션 함수
+    const typeText = () => {
+      isTyping.value = true // 타이핑 중임을 표시
+      let index = 0
+      typingInterval = setInterval(() => {
+        if (index < fullText.value.length) {
+          displayedText.value += fullText.value[index]
+          index++
+        } else {
+          clearInterval(typingInterval)
+          isTyping.value = false // 타이핑이 끝나면 버튼을 다시 활성화
+        }
+      }, 100)
+    }
+
+    // 텍스트 디스플레이 함수
+    const displayText = (text, isInstant = false) => {
+      // 이전 타이머 클리어
+      if (resetTimeout) {
+        clearTimeout(resetTimeout)
+      }
+
+      // 타이핑 중에는 새로운 클릭 무시
+      if (isTyping.value) {
+        clearInterval(typingInterval) // 이전 타이핑 애니메이션 종료
+        displayedText.value = '' // 기존 텍스트 초기화
+        isTyping.value = false // 타이핑이 종료됨을 표시
+      }
+
+      displayedText.value = '' // 기존 텍스트 초기화
+      fullText.value = text // 새로운 텍스트 설정
+
+      // 타이핑 없이 즉시 텍스트를 표시해야 할 경우
+      if (isInstant) {
+        displayedText.value = text
+        isTyping.value = false // 즉시 완료 처리
+      } else {
+        typeText() // 타이핑 애니메이션 시작
+      }
+
+      // 4초 후에 기본 텍스트로 변경
+      resetTimeout = setTimeout(() => {
+        displayedText.value = defaultText.value
+      }, 4000)
+    }
     //--------------------------------------------
     const playSound = (sound) => {
       if (sound.value) {
@@ -317,19 +420,22 @@ export default {
     }
 
     const openModal = (modalNumber) => {
-      // if (buttonsClicked.value[modalNumber - 1]) return
-      // buttonsClicked.value[modalNumber - 1] = true
-
       activeModal.value = modalNumber
 
       // 첫 번째 모달은 한 번만 열림
       if (modalNumber === 1) {
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(0) // 첫 번째 이미지 변경
+        displayText(
+          '평화로운 때가 되면 사람들은 죽일 동물을 찾아 헤맨다. 그 시기에 사냥당한 사슴의 머리는… 왠지 기묘하다.',
+          false
+        ) // 텍스트 표시
       } else if (modalNumber === 2) {
         // 두 번째 모달 열 때는 count 증가하지 않음
+        displayText('모닥불에서 열기가 전해진다.', false) // 텍스트 표시
       } else if (modalNumber === 3) {
         // 세 번째 모달 열 때는 count 증가하지 않음
+        displayText('차곡차곡 정리된 템플러 갑옷이다.', false) // 텍스트 표시
       }
     }
 
@@ -339,12 +445,21 @@ export default {
 
     const openNestedModal = (modalNumber) => {
       if (modalNumber === 2 && !activeNestedModal2.value) {
+        displayText(
+          '대재앙, 다크스폰… 누군가 쓴 일지 같다. 많이 연구한 듯 빼곡하게 적혀있었던 듯 하지만 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?',
+          false
+        ) // 텍스트 표시
+
         playSound(bonfireSound)
 
         activeNestedModal2.value = true
         count.value++ // 두 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(1) // 두 번째 이미지 변경
       } else if (modalNumber === 3 && !activeNestedModal3.value) {
+        displayText(
+          '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.',
+          false
+        ) // 텍스트 표시
         activeNestedModal3.value = true
         count.value++ // 세 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(2) // 세 번째 이미지 변경
@@ -400,7 +515,11 @@ export default {
       boneSound,
       lightSound,
       bonfireSound,
-      playSound
+      playSound,
+      defaultText,
+      displayedText,
+      displayText,
+      isTyping
     }
   }
 }

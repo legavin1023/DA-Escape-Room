@@ -133,6 +133,11 @@ body {
             display: inline-block;
             padding: 20px 54px 0 54px;
         }
+        span {
+            display: inline-block; /* inline-block으로 설정하여 각 글자에 개별적으로 애니메이션 적용 */
+            opacity: 0; /* 초기 상태는 투명 */
+            transform: translateY(20px); /* 초기 위치 이동 */
+        }
     }
 }
 .collect {
