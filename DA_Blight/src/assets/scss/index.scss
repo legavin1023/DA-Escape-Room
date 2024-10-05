@@ -1,17 +1,27 @@
+@font-face {
+    font-family: "GabiaNull-Regular";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/GabiaNull-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     height: 100%;
-    background: #000;
+    background: #222;
+    color: #eee;
+}
+#app {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #eee;
 }
 .page {
     position: relative;
     width: 900px;
     height: 600px;
     background: #000;
-    border: 1px solid #eee;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -25,12 +35,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "GabiaNull-Regular";
+    font-size: 20px;
+    line-height: 30px;
+    z-index: 100;
     &-border {
         width: 885px;
         height: 130px;
         border: 1px solid #222222;
         p {
-            padding: 0 0 20px 54px;
+            display: inline-block;
+            padding: 20px 54px 0 54px;
         }
     }
 }
@@ -45,6 +60,19 @@ body {
     background-size: cover;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
 
+    &-nextBtn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        bottom: 132px;
+        width: 57px;
+        height: 53px;
+        background-image: url("@/assets/image/next_btn.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: transparent;
+        z-index: 100;
+    }
     &-1 {
         position: absolute;
         top: 44px;
@@ -73,58 +101,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 50;
 
     &-content {
         width: 244px;
         height: 281px;
         position: relative;
         text-align: center;
+        z-index: 10;
     }
-    .modal_1_1 {
-        background: url("@/assets/image/map1/map_1_1.png") no-repeat;
-    }
-    .modal_1_2_1 {
-        background: url("@/assets/image/map1/map_1_2_1.png") no-repeat;
-        button {
-            position: absolute;
-            left: 54px;
-            top: 80px;
-            width: 136px;
-            height: 140px;
-            border: 1px solid saddlebrown;
-            background: transparent;
-        }
-    }
-    .modal_1_2_2 {
-        background: url("@/assets/image/map1/map_1_2_2.png") no-repeat;
-    }
-    .modal_1_3_1 {
-        background: url("@/assets/image/map1/map_1_3_1.png") no-repeat;
-        button {
-            position: absolute;
-            left: 90px;
-            top: 140px;
-            width: 40px;
-            height: 40px;
-            border: 1px solid saddlebrown;
-            background: transparent;
-        }
-    }
-    .modal_1_3_2 {
-        background: url("@/assets/image/map1/map_1_3_2.png") no-repeat;
-    }
+
     .close {
-        display: inline-block;
+        display: block;
         position: absolute;
         left: 20px;
         top: 20px;
         width: 34px;
         height: 34px;
-        background-image: url("@/assets/image/arrow_back.png") no-repeat;
+        background-image: url("@/assets/image/arrow_back.png");
+        background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
         z-index: 100;
+        cursor: pointer;
+    }
+    .modal_1_1 {
+        background: url("@/assets/image/map1/map_1_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_1_2_1 {
+        background: url("@/assets/image/map1/map_1_2_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 54px;
+            top: 80px;
+            width: 136px;
+            height: 140px;
+            background: transparent;
+        }
+    }
+    .modal_1_2_2 {
+        background: url("@/assets/image/map1/map_1_2_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_1_3_1 {
+        background: url("@/assets/image/map1/map_1_3_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 90px;
+            top: 140px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+        }
+    }
+    .modal_1_3_2 {
+        background: url("@/assets/image/map1/map_1_3_2.png");
+        background-repeat: no-repeat;
     }
 }
 
@@ -134,12 +171,14 @@ body.modal-open {
 }
 .map1 {
     background-image: url("@/assets/image/map1/background_1.png");
+    background-repeat: no-repeat;
     .page-1-1 {
         width: 160px;
         height: 200px;
         background: transparent;
         position: absolute;
         top: 54px;
+        cursor: pointer;
     }
     .page-1-2 {
         width: 80px;
@@ -147,6 +186,7 @@ body.modal-open {
         background: transparent;
         position: absolute;
         top: 370px;
+        cursor: pointer;
     }
     .page-1-3 {
         width: 80px;
@@ -155,5 +195,148 @@ body.modal-open {
         position: absolute;
         top: 356px;
         left: 246px;
+        cursor: pointer;
+    }
+    .effect {
+        color: transparent;
+        cursor: pointer;
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .bonfire {
+            animation: blink 2s ease-in-out infinite;
+            position: absolute;
+            left: 299px;
+            top: 260px;
+            width: 299px;
+            height: 260px;
+            background: url("@/assets/image/map1/bonfire.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        .light_btn_1 {
+            position: absolute;
+            left: 326px;
+            top: 200px;
+            width: 40px;
+            height: 80px;
+            z-index: 20;
+            border: 1px solid;
+        }
+
+        .light_btn_2 {
+            position: absolute;
+            left: 510px;
+            top: 180px;
+            width: 70px;
+            height: 100px;
+            z-index: 20;
+        }
+        .light_1 {
+            position: absolute;
+            left: 234px;
+            top: 104px;
+            width: 194px;
+            height: 217px;
+            background: url("@/assets/image/map1/light_1.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 1; /* 초기 상태 */
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .light_2 {
+            position: absolute;
+            left: 430px;
+            top: 80px;
+            width: 218px;
+            height: 218px;
+            background: url("@/assets/image/map1/light_2.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 1; /* 초기 상태 */
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .light_hidden {
+            opacity: 0; /* 숨김 상태 */
+        }
+        @keyframes shake_lock {
+            0% {
+                transform: rotate(0deg); /* 초기 상태 */
+            }
+            25% {
+                transform: rotate(-10deg); /* 왼쪽으로 회전 */
+            }
+            50% {
+                transform: rotate(10deg); /* 오른쪽으로 회전 */
+            }
+            75% {
+                transform: rotate(-10deg); /* 다시 왼쪽으로 회전 */
+            }
+            100% {
+                transform: rotate(0deg); /* 원래 위치로 돌아오기 */
+            }
+        }
+        .bone {
+            position: absolute;
+            left: 105px;
+            top: 377px;
+            width: 71px;
+            height: 23px;
+            background: url("@/assets/image/map1/bone.png");
+            background-repeat: no-repeat;
+        }
+        .bone_move {
+            animation: shake_lock 0.5s ease-in-out;
+        }
+
+        .lock_btn {
+            position: absolute;
+            left: 10px;
+            bottom: 140px;
+            width: 220px;
+            height: 60px;
+            z-index: 20;
+        }
+        .lock {
+            position: absolute;
+            left: 116px;
+            bottom: 170px;
+            width: 12px;
+            height: 24px;
+            background: url("@/assets/image/map1/lock.png");
+            background-repeat: no-repeat;
+            transform: translateX(0); /* 초기 위치 설정 */
+            transform-origin: center; /* 중심에서 흔들리도록 설정 */
+        }
+        .lock_move {
+            animation: shake_lock 0.5s ease-in-out;
+        }
+        .arrow {
+            position: absolute;
+            left: 80px;
+            top: 80px;
+            width: 59px;
+            height: 57px;
+            background: url("@/assets/image/map1/arrow.png");
+            background-repeat: no-repeat;
+        }
+
+        .frame_light {
+            position: absolute;
+            left: 590px;
+            top: 38px;
+            width: 310px;
+            height: 234px;
+            background: url("@/assets/image/map1/frame_light.png");
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .frame_light_hidden {
+            opacity: 0;
+        }
     }
 }
