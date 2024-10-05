@@ -4,6 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: "Pretendard";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
 body {
     height: 100%;
     background: #222;
@@ -16,7 +22,42 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+.sound {
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+    width: 900px;
+    height: 40px;
+    font-size: 14px;
+    color: #303030;
+    &_btn {
+        font-family: "Pretendard";
+        z-index: 120;
+        p {
+            line-height: 40px;
+            span {
+                margin: 0 6px 16px 8px;
+            }
+        }
+        .play {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url("@/assets/image/Property 1=Default.png");
+            text-indent: -9999px;
+        }
+        .pause {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url("@/assets/image/Property 1=Variant2.png");
+            text-indent: -9999px;
+        }
+    }
+}
+
 .page {
     position: relative;
     width: 900px;
@@ -26,6 +67,51 @@ body {
     justify-content: end;
     align-items: center;
     flex-direction: column;
+}
+.main {
+    background-image: url("@/assets/image/display_area.png");
+    background-repeat: no-repeat;
+    .start {
+        width: 243px;
+        height: 76px;
+        background: #070909;
+        border: 3px solid #252525;
+        border-radius: 38px;
+        margin-bottom: 90px;
+        font-size: 30px;
+        color: #d4d4d4;
+        font-family: "Pretendard";
+        cursor: pointer;
+    }
+}
+.intro {
+    font-family: "GabiaNull-Regular";
+    font-size: 20px;
+    line-height: 30px;
+    background-image: url("@/assets/image/map1/background_1.png");
+    background-repeat: no-repeat;
+    @keyframes fadeEffect {
+        0%,
+        100% {
+            opacity: 0.84; /* 시작과 끝에서 불투명도 0 */
+        }
+        50% {
+            opacity: 1; /* 중간에서 불투명도 1 */
+        }
+    }
+    .dim {
+        width: 900px;
+        height: 600px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background: #000;
+        opacity: 0.84;
+        animation: fadeEffect 2s infinite;
+    }
+    span {
+        display: block;
+    }
 }
 .narration {
     width: 900px;
@@ -43,7 +129,7 @@ body {
         width: 885px;
         height: 130px;
         border: 1px solid #222222;
-        p {
+        > p {
             display: inline-block;
             padding: 20px 54px 0 54px;
         }
@@ -71,7 +157,7 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
-        z-index: 100;
+        z-index: 1000;
     }
     &-1 {
         position: absolute;
@@ -169,6 +255,7 @@ body {
 body.modal-open {
     overflow: hidden;
 }
+
 .map1 {
     background-image: url("@/assets/image/map1/background_1.png");
     background-repeat: no-repeat;

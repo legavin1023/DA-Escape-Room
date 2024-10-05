@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <button @click="toggleMusic">
-      <span v-if="isPlaying">🔊</span>
+  <div class="sound">
+    <button class="sound_btn" @click="toggleMusic">
+      <p v-if="isPlaying">Volume<span class="play">🔊</span></p>
       <!-- 재생 중이면 스피커 아이콘 -->
-      <span v-else>🔇</span>
+      <p v-else>Volume<span class="pause">🔇</span></p>
       <!-- 정지 상태면 음소거 아이콘 -->
     </button>
 

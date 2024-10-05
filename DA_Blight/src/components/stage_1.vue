@@ -92,6 +92,9 @@
       <span class="close" @click="closeNestedModal3">×</span>
     </div>
   </div>
+  <audio ref="boneSound" src="/public/sound//map_1/달그락 소리.mp3"></audio>
+  <audio ref="lightSound" src="/public/sound//map_1/불소리.mp3"></audio>
+  <audio ref="bonfireSound" src="/public/sound//map_1//화덕소리.mp3"></audio>
 </template>
 
 <script>
@@ -124,8 +127,26 @@ export default {
 
     const collectImages = ref([image1, image2, image3])
 
-    //--------------------------------------------
+    const boneSound = ref(null)
+    const lightSound = ref(null)
+    const bonfireSound = ref(null)
 
+    //--------------------------------------------
+    const playSound = (sound) => {
+      if (sound.value) {
+        sound.value.pause() // 이전 소리 멈춤
+        sound.value.currentTime = 0 // 소리의 시작 시간 초기화
+
+        // 소리 재생
+        sound.value.play()
+
+        // 소리 재생이 끝났을 때의 동작
+        sound.value.onended = () => {
+          sound.value.pause() // 소리 멈춤
+          sound.value.currentTime = 0 // 시작 시간 초기화
+        }
+      }
+    }
     // 클릭 시 클래스 활성화
     const click_light_1 = ref(false)
     const click_light_2 = ref(false)
@@ -142,6 +163,7 @@ export default {
     }
 
     const click_light_btn_1 = () => {
+      playSound(lightSound)
       handleAnimation('.light_1', 'light_hidden', 600)
       click_light_1.value = !click_light_1.value
       narrationText.value = 'candleText'
@@ -162,6 +184,7 @@ export default {
     }
 
     const click_light_btn_2 = () => {
+      playSound(lightSound)
       handleAnimation('.light_2', 'light_hidden', 600)
       click_light_2.value = !click_light_2.value
       narrationText.value = 'candleText'
@@ -216,6 +239,7 @@ export default {
 
     const boneText = ref('boneText')
     const click_bone_btn = () => {
+      playSound(boneSound)
       boneText.value = true // 텍스트 보여주기
       narrationText.value = 'boneText'
       activeModal.value = 100
@@ -233,15 +257,12 @@ export default {
         }
       }, 3000)
 
+      // 뼈 요소의 애니메이션 처리
       const bone = document.querySelector('.bone')
-      if (click_lock.value) {
-        bone.classList.add('bone_move')
-        setTimeout(() => {
-          bone.classList.remove('bone_move')
-        }, 800)
-      } else {
+      bone.classList.add('bone_move') // 항상 뼈 애니메이션 추가
+      setTimeout(() => {
         bone.classList.remove('bone_move')
-      }
+      }, 800)
     }
 
     const arrowText = ref('arrowText')
@@ -318,6 +339,8 @@ export default {
 
     const openNestedModal = (modalNumber) => {
       if (modalNumber === 2 && !activeNestedModal2.value) {
+        playSound(bonfireSound)
+
         activeNestedModal2.value = true
         count.value++ // 두 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(1) // 두 번째 이미지 변경
@@ -373,7 +396,11 @@ export default {
       arrowText,
       click_frame_light_btn,
       frameText,
-      narrationText
+      narrationText,
+      boneSound,
+      lightSound,
+      bonfireSound,
+      playSound
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <button @click="handleStart">start</button>
+  <div class="page main">
+    <button class="start" @click="handleStart">시작하기</button>
   </div>
 </template>
 
