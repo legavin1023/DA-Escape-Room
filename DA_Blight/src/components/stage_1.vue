@@ -196,9 +196,9 @@
     </div>
   </div>
 
-  <audio ref="boneSound" src="/public/sound//map_1/달그락 소리.mp3"></audio>
-  <audio ref="lightSound" src="/public/sound//map_1/불소리.mp3"></audio>
-  <audio ref="bonfireSound" src="/public/sound//map_1//화덕소리.mp3"></audio>
+  <audio ref="boneSound" src="@/assets/sound//map_1/달그락 소리.mp3"></audio>
+  <audio ref="lightSound" src="@/assets/sound//map_1/불소리.mp3"></audio>
+  <audio ref="bonfireSound" src="@/assets/sound/map_1//화덕소리.mp3"></audio>
 </template>
 
 <script>

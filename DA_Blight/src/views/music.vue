@@ -8,7 +8,7 @@
     </button>
 
     <!-- 음악 요소 -->
-    <audio ref="audioElement" src="/music/Anguish.mp3" loop></audio>
+    <audio ref="audioElement" src="@/assets/music/Anguish.mp3" loop></audio>
   </div>
 </template>
 
