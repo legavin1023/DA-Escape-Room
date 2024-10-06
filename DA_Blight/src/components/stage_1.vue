@@ -199,6 +199,12 @@
   <audio ref="boneSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/달그락 소리.mp3"></audio>
   <audio ref="lightSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/불소리.mp3"></audio>
   <audio ref="bonfireSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화덕소리.mp3"></audio>
+  <audio ref="armorSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/갑옷.mp3"></audio>
+  <audio ref="gunSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/벽장식_총소리.mp3"></audio>
+  <audio ref="frameSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/액자삐걱.mp3"></audio>
+  <audio ref="lockSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/자물쇠.mp3"></audio>
+  <audio ref="clothSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/천이스치는소리.mp3"></audio>
+  <audio ref="arrowSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화살띠용.mp3"></audio>
 </template>
 
 <script>
@@ -234,6 +240,12 @@ export default {
     const boneSound = ref(null)
     const lightSound = ref(null)
     const bonfireSound = ref(null)
+    const armorSound = ref(null)
+    const gunSound = ref(null)
+    const frameSound = ref(null)
+    const lockSound = ref(null)
+    const clothSound = ref(null)
+    const arrowSound = ref(null)
 
     //---------------------------------------------
     const defaultText = ref('모닥불이 실내의 찬 공기를 데우고 있다.')
@@ -391,6 +403,7 @@ export default {
     const lockText = ref('lockText')
 
     const click_lock_btn = () => {
+       playSound(lockSound)
       click_lock.value = !click_lock.value
       narrationText.value = 'lockText'
       lockText.value = true // 텍스트 보여주기
@@ -450,6 +463,7 @@ export default {
 
     const arrowText = ref('arrowText')
     const click_arrow_btn = () => {
+      playSound(arrowSound)
       arrowText.value = true // 텍스트 보여주기
       narrationText.value = 'arrowText'
       activeModal.value = 100
@@ -470,6 +484,7 @@ export default {
 
     const frameText = ref('frameText')
     const click_frame_light_btn = () => {
+     playSound(frameSound)
       frameText.value = true // 텍스트 보여주기
       narrationText.value = 'frameText'
       activeModal.value = 100
@@ -506,6 +521,7 @@ export default {
 
       // 첫 번째 모달은 한 번만 열림
       if (modalNumber === 1) {
+        playSound(gunSound)
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(0) // 첫 번째 이미지 변경
         // 모달이 이미 열렸다면 done 클래스 추가
@@ -519,6 +535,7 @@ export default {
       } else if (modalNumber === 2) {
         // 두 번째 모달 열 때는 count 증가하지 않음
       } else if (modalNumber === 3) {
+        playSound(armorSound)
         // 세 번째 모달 열 때는 count 증가하지 않음
       }
     }
@@ -545,6 +562,7 @@ export default {
           modalOpenedOnce2.value = true
         }
       } else if (modalNumber === 3 && !activeNestedModal3.value) {
+        playSound(clothSound)
         activeNestedModal3.value = true
         count.value++ // 세 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(2) // 세 번째 이미지 변경
@@ -609,6 +627,12 @@ export default {
       lightSound,
       bonfireSound,
       playSound,
+      armorSound,
+      gunSound,
+      frameSound,
+      lockSound,
+      clothSound,
+      arrowSound,
       defaultText,
       displayedText,
       displayText,
