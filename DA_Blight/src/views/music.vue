@@ -8,7 +8,7 @@
     </button>
 
     <!-- 음악 요소 -->
-    <audio ref="audioElement" src="https://legavin1023.github.io/DA-Escape-Room/public/music/Anguish.mp3" loop type="audio/mpeg"></audio>
+    <audio ref="audioElement" src="https://legavin1023.github.io/DA-Escape-Room/music/Anguish.mp3" loop type="audio/mpeg"></audio>
   </div>
 </template>
 
