@@ -10,7 +10,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: process.env.NODE_ENV === 'production'
-    ? '/DA-Escape-Room/'  // GitHub Pages의 리포지토리 이름으로 변경
-    : '/',  // 개발 환경에서는 루트 경로
+  base: '/DA-Escape-Room/',
 });
