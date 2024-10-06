@@ -94,23 +94,24 @@
     </div>
   </div>
 
-  <!-- 첫 번째 모달 -->
-  <div v-if="activeModal === 1" class="modal">
-    <div class="modal-content modal_1_1">
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
-          }
-        "
-        >×</span
-      >
-      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+  <div class="modal_box_1">
+    <!-- 첫 번째 모달 -->
+    <div v-if="activeModal === 1" class="modal">
+      <div class="modal-content modal_1_1">
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+            }
+          "
+          >×</span
+        >
+        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+      </div>
     </div>
   </div>
-
   <!-- 두 번째 모달 -->
   <div v-if="activeModal === 2" class="modal">
     <div class="modal-content modal_1_2_1">
@@ -134,21 +135,22 @@
       >
     </div>
   </div>
-
-  <!-- 두 번째 모달 안의 모달 -->
-  <div v-if="activeNestedModal2" class="modal">
-    <div class="modal-content modal_1_2_2">
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeNestedModal2()
-            displayText('모닥불에서 열기가 전해진다.')
-          }
-        "
-        >×</span
-      >
-      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+  <div class="modal_box_2">
+    <!-- 두 번째 모달 안의 모달 -->
+    <div v-if="activeNestedModal2" class="modal">
+      <div class="modal-content modal_1_2_2">
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeNestedModal2()
+              displayText('모닥불에서 열기가 전해진다.')
+            }
+          "
+          >×</span
+        >
+        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+      </div>
     </div>
   </div>
 
@@ -175,23 +177,25 @@
       >
     </div>
   </div>
-
-  <!-- 세 번째 모달 안의 모달 -->
-  <div v-if="activeNestedModal3" class="modal">
-    <div class="modal-content modal_1_3_2">
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeNestedModal3()
-            displayText('차곡차곡 정리된 템플러 갑옷이다.')
-          }
-        "
-        >×</span
-      >
-      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+  <div class="modal_box_3">
+    <!-- 세 번째 모달 안의 모달 -->
+    <div v-if="activeNestedModal3" class="modal">
+      <div class="modal-content modal_1_3_2">
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeNestedModal3()
+              displayText('차곡차곡 정리된 템플러 갑옷이다.')
+            }
+          "
+          >×</span
+        >
+        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+      </div>
     </div>
   </div>
+
   <audio ref="boneSound" src="/public/sound//map_1/달그락 소리.mp3"></audio>
   <audio ref="lightSound" src="/public/sound//map_1/불소리.mp3"></audio>
   <audio ref="bonfireSound" src="/public/sound//map_1//화덕소리.mp3"></audio>
@@ -230,6 +234,7 @@ export default {
     const boneSound = ref(null)
     const lightSound = ref(null)
     const bonfireSound = ref(null)
+
     //---------------------------------------------
     const defaultText = ref('모닥불이 실내의 찬 공기를 데우고 있다.')
     const fullText = ref('')
@@ -493,7 +498,9 @@ export default {
         showBtn.value = true // 모든 이미지가 변경되면 버튼 활성화
       }
     }
-
+    const modalOpenedOnce1 = ref(false) // 모달이 한번 열렸는지 여부
+    const modalOpenedOnce2 = ref(false) // 모달이 한번 열렸는지 여부
+    const modalOpenedOnce3 = ref(false) // 모달이 한번 열렸는지 여부
     const openModal = (modalNumber) => {
       activeModal.value = modalNumber
 
@@ -501,6 +508,14 @@ export default {
       if (modalNumber === 1) {
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(0) // 첫 번째 이미지 변경
+        // 모달이 이미 열렸다면 done 클래스 추가
+        if (modalOpenedOnce1.value) {
+          const modalBox = document.querySelector('.modal_box_1')
+          modalBox.classList.add('done')
+        } else {
+          // 처음 열었을 경우 modalOpenedOnce를 true로 설정
+          modalOpenedOnce1.value = true
+        }
       } else if (modalNumber === 2) {
         // 두 번째 모달 열 때는 count 증가하지 않음
       } else if (modalNumber === 3) {
@@ -510,31 +525,37 @@ export default {
 
     const closeModal = () => {
       activeModal.value = null
-      activeNestedModal2.value = false // Close nested modal if applicable
-      activeNestedModal3.value = false // Close nested modal if applicable
-      console.log(activeModal.value)
+      activeNestedModal2.value = false
+      activeNestedModal3.value = false
     }
 
     const openNestedModal = (modalNumber) => {
       if (modalNumber === 2 && !activeNestedModal2.value) {
-        displayText(
-          '대재앙, 다크스폰… 누군가 쓴 일지 같다. 많이 연구한 듯 빼곡하게 적혀있었던 듯 하지만 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?',
-          false
-        ) // 텍스트 표시
-
         playSound(bonfireSound)
-
         activeNestedModal2.value = true
         count.value++ // 두 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(1) // 두 번째 이미지 변경
+
+        // 모달이 이미 열렸다면 done 클래스 추가
+        if (modalOpenedOnce2.value) {
+          const modalBox = document.querySelector('.modal_box_2')
+          modalBox.classList.add('done')
+        } else {
+          // 처음 열었을 경우 modalOpenedOnce를 true로 설정
+          modalOpenedOnce2.value = true
+        }
       } else if (modalNumber === 3 && !activeNestedModal3.value) {
-        displayText(
-          '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.',
-          false
-        ) // 텍스트 표시
         activeNestedModal3.value = true
         count.value++ // 세 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(2) // 세 번째 이미지 변경
+        // 모달이 이미 열렸다면 done 클래스 추가
+        if (modalOpenedOnce3.value) {
+          const modalBox = document.querySelector('.modal_box_3')
+          modalBox.classList.add('done')
+        } else {
+          // 처음 열었을 경우 modalOpenedOnce를 true로 설정
+          modalOpenedOnce3.value = true
+        }
       }
     }
 
@@ -591,7 +612,10 @@ export default {
       defaultText,
       displayedText,
       displayText,
-      isTyping
+      isTyping,
+      modalOpenedOnce1,
+      modalOpenedOnce2,
+      modalOpenedOnce3
     }
   }
 }
