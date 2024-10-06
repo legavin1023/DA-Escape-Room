@@ -19,7 +19,9 @@
     ></button>
     <div class="narration">
       <div class="narration-border">
-        <p>{{ displayedText || defaultText }}</p>
+        <p class="narration-text" :class="{ visible: displayedText }">
+          {{ displayedText || defaultText }}
+        </p>
       </div>
     </div>
     <div class="collect">
@@ -30,11 +32,7 @@
     <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
     <div class="effect">
       <!-- 모닥불 -->
-      <div
-        class="bonfire"
-        @click="displayText('모닥불이 실내의 찬 공기를 데우고 있다.', true)"
-        :class="{ disabled: isTyping }"
-      ></div>
+      <div class="bonfire"></div>
 
       <!-- 빛 1 -->
       <div :class="{ light_1: true }"></div>
@@ -92,7 +90,16 @@
   <!-- 첫 번째 모달 -->
   <div v-if="activeModal === 1" class="modal">
     <div class="modal-content modal_1_1">
-      <span class="close" @click="closeModal">×</span>
+      <span
+        class="close"
+        @click="
+          (event) => {
+            closeModal()
+            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+          }
+        "
+        >×</span
+      >
     </div>
   </div>
 
@@ -107,14 +114,32 @@
             )
         "
       ></button>
-      <span class="close" @click="closeModal">×</span>
+      <span
+        class="close"
+        @click="
+          (event) => {
+            closeModal()
+            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+          }
+        "
+        >×</span
+      >
     </div>
   </div>
 
   <!-- 두 번째 모달 안의 모달 -->
   <div v-if="activeNestedModal2" class="modal">
     <div class="modal-content modal_1_2_2">
-      <span class="close" @click="closeNestedModal2">×</span>
+      <span
+        class="close"
+        @click="
+          (event) => {
+            closeNestedModal2()
+            displayText('모닥불에서 열기가 전해진다.')
+          }
+        "
+        >×</span
+      >
     </div>
   </div>
 
@@ -129,14 +154,32 @@
             )
         "
       ></button>
-      <span class="close" @click="closeModal">×</span>
+      <span
+        class="close"
+        @click="
+          (event) => {
+            closeModal()
+            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+          }
+        "
+        >×</span
+      >
     </div>
   </div>
 
   <!-- 세 번째 모달 안의 모달 -->
   <div v-if="activeNestedModal3" class="modal">
     <div class="modal-content modal_1_3_2">
-      <span class="close" @click="closeNestedModal3">×</span>
+      <span
+        class="close"
+        @click="
+          (event) => {
+            closeNestedModal3()
+            displayText('차곡차곡 정리된 템플러 갑옷이다.')
+          }
+        "
+        >×</span
+      >
     </div>
   </div>
   <audio ref="boneSound" src="/public/sound//map_1/달그락 소리.mp3"></audio>
@@ -218,6 +261,12 @@ export default {
         isTyping.value = false // 타이핑이 종료됨을 표시
       }
 
+      // 텍스트 디스플레이를 위해 오퍼시티를 0으로 설정
+      const narrationElement = document.querySelector('.narration_text')
+      if (narrationElement) {
+        narrationElement.classList.remove('visible') // 오퍼시티를 0으로 설정
+      }
+
       displayedText.value = '' // 기존 텍스트 초기화
       fullText.value = text // 새로운 텍스트 설정
 
@@ -229,11 +278,27 @@ export default {
         typeText() // 타이핑 애니메이션 시작
       }
 
-      // 4초 후에 기본 텍스트로 변경
-      resetTimeout = setTimeout(() => {
-        displayedText.value = defaultText.value
-      }, 4000)
+      // 텍스트가 바뀌면 오퍼시티를 1로 설정
+      setTimeout(() => {
+        if (narrationElement) {
+          narrationElement.classList.add('visible') // 오퍼시티를 1로 설정
+        }
+      }, 1) // 잠시 후에 오퍼시티를 1로 증가시키도록 설정
+
+      if (
+        activeModal.value !== 1 &&
+        activeModal.value !== 2 &&
+        activeModal.value !== 3 &&
+        !activeNestedModal2.value &&
+        !activeNestedModal3.value
+      ) {
+        // 4초 후에 기본 텍스트로 변경
+        resetTimeout = setTimeout(() => {
+          displayedText.value = defaultText.value
+        }, 4000)
+      }
     }
+
     //--------------------------------------------
     const playSound = (sound) => {
       if (sound.value) {
@@ -426,21 +491,18 @@ export default {
       if (modalNumber === 1) {
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(0) // 첫 번째 이미지 변경
-        displayText(
-          '평화로운 때가 되면 사람들은 죽일 동물을 찾아 헤맨다. 그 시기에 사냥당한 사슴의 머리는… 왠지 기묘하다.',
-          false
-        ) // 텍스트 표시
       } else if (modalNumber === 2) {
         // 두 번째 모달 열 때는 count 증가하지 않음
-        displayText('모닥불에서 열기가 전해진다.', false) // 텍스트 표시
       } else if (modalNumber === 3) {
         // 세 번째 모달 열 때는 count 증가하지 않음
-        displayText('차곡차곡 정리된 템플러 갑옷이다.', false) // 텍스트 표시
       }
     }
 
     const closeModal = () => {
       activeModal.value = null
+      activeNestedModal2.value = false // Close nested modal if applicable
+      activeNestedModal3.value = false // Close nested modal if applicable
+      console.log(activeModal.value)
     }
 
     const openNestedModal = (modalNumber) => {

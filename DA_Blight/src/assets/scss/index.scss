@@ -117,7 +117,7 @@ body {
     width: 900px;
     height: 144px;
     bottom: 0;
-    background: #000;
+    background: #101010;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,20 +129,31 @@ body {
         width: 885px;
         height: 130px;
         border: 1px solid #222222;
-        > p {
-            display: inline-block;
-            padding: 20px 54px 0 54px;
+    }
+    @keyframes opacity_text {
+        0% {
+            opacity: 0;
         }
-        span {
-            display: inline-block; /* inline-block으로 설정하여 각 글자에 개별적으로 애니메이션 적용 */
-            opacity: 0; /* 초기 상태는 투명 */
-            transform: translateY(20px); /* 초기 위치 이동 */
+        60% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
+    &-text {
+        display: inline-block;
+        padding: 20px 54px 0 54px;
+        opacity: 0;
+        transition: opacity_text 0.2s ease; /* 애니메이션 효과 */
+    }
+}
+.visible {
+    opacity: 1; /* 보이도록 변경 */
 }
 .collect {
     position: absolute;
-    bottom: 140px;
+    bottom: 134px;
     right: 30px;
     width: 171px;
     height: 197px;
@@ -155,7 +166,7 @@ body {
         display: block;
         position: absolute;
         right: 20px;
-        bottom: 132px;
+        bottom: 118px;
         width: 57px;
         height: 53px;
         background-image: url("@/assets/image/next_btn.png");
