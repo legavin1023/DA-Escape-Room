@@ -29,7 +29,14 @@
       <img class="collect-2" :src="collectImages[1]" alt="Image 2" />
       <img class="collect-3" :src="collectImages[2]" alt="Image 3" />
     </div>
-    <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
+    <button
+      class="collect-nextBtn"
+      :class="{ disabled: activeModal !== null }"
+      v-if="showBtn"
+      @click="goNext"
+    >
+      ->
+    </button>
     <div class="effect">
       <!-- 모닥불 -->
       <div class="bonfire"></div>
@@ -100,6 +107,7 @@
         "
         >×</span
       >
+      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
     </div>
   </div>
 
@@ -140,6 +148,7 @@
         "
         >×</span
       >
+      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
     </div>
   </div>
 
@@ -180,6 +189,7 @@
         "
         >×</span
       >
+      <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
     </div>
   </div>
   <audio ref="boneSound" src="/public/sound//map_1/달그락 소리.mp3"></audio>

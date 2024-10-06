@@ -31,8 +31,8 @@ body {
     width: 900px;
     height: 40px;
     font-size: 14px;
-    color: #303030;
     &_btn {
+        color: #303030;
         font-family: "Pretendard";
         z-index: 120;
         p {
@@ -124,7 +124,7 @@ body {
     font-family: "GabiaNull-Regular";
     font-size: 20px;
     line-height: 30px;
-    z-index: 100;
+    z-index: 200;
     &-border {
         width: 885px;
         height: 130px;
@@ -145,7 +145,7 @@ body {
         display: inline-block;
         padding: 20px 54px 0 54px;
         opacity: 0;
-        transition: opacity_text 0.2s ease; /* 애니메이션 효과 */
+        transition: opacity_text 0.4s ease; /* 애니메이션 효과 */
     }
 }
 .visible {
@@ -161,6 +161,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
+    z-index: 200;
 
     &-nextBtn {
         display: block;
@@ -173,7 +174,7 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
-        z-index: 1000;
+        z-index: 250;
     }
     &-1 {
         position: absolute;
@@ -203,16 +204,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 50;
+    z-index: 150;
 
     &-content {
         width: 244px;
         height: 281px;
         position: relative;
+        top: -50px;
         text-align: center;
         z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        &-get {
+            width: 145px;
+            height: 27px;
+            background-color: #e78326;
+            columns: #fff;
+            font-size: 16px;
+            font-family: "Pretendard";
+            line-height: 27px;
+            border-radius: 15px;
+            span {
+                display: inline-block;
+                text-indent: -9999px;
+                width: 13px;
+                height: 11px;
+                background: url("@/assets/image/check.png");
+                background-repeat: no-repeat;
+                position: relative;
+                top: 8px;
+                margin-right: 10px;
+            }
+        }
     }
-
+    .done {
+        p {
+            background-color: #797979;
+            span {
+                display: inline-block;
+                text-indent: -9999px;
+                width: 13px;
+                height: 11px;
+                background: url("@/assets/image/check_done.png");
+                background-repeat: no-repeat;
+                position: relative;
+                top: 8px;
+                margin-right: 10px;
+            }
+        }
+    }
     .close {
         display: block;
         position: absolute;
