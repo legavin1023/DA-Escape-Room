@@ -119,9 +119,7 @@
         @click="
           openNestedModal(2),
             displayText(
-              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 많이 연구한 듯 빼곡하게 적혀있었던 듯 하지만 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
-            )
-        "
+              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?')"
       ></button>
       <span
         class="close"
@@ -195,7 +193,7 @@
       </div>
     </div>
   </div>
-
+  <audio ref="nextSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"></audio>
   <audio ref="boneSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/달그락 소리.mp3"></audio>
   <audio ref="lightSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/불소리.mp3"></audio>
   <audio ref="bonfireSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화덕소리.mp3"></audio>
@@ -237,6 +235,7 @@ export default {
 
     const collectImages = ref([image1, image2, image3])
 
+    const nextSound =ref(null)
     const boneSound = ref(null)
     const lightSound = ref(null)
     const bonfireSound = ref(null)
@@ -592,6 +591,7 @@ export default {
     }
 
     const goNext = () => {
+      playSound(nextSound)
       router.push('/stage_2')
     }
 
@@ -623,6 +623,7 @@ export default {
       click_frame_light_btn,
       frameText,
       narrationText,
+      nextSound,
       boneSound,
       lightSound,
       bonfireSound,

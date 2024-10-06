@@ -8,6 +8,7 @@
     </div>
     <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
   </div>
+    <audio ref="nextSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"></audio>
 </template>
 
 <script>
@@ -26,6 +27,7 @@ export default {
     const index = ref(0) // 글자 인덱스
     const currentTextIndex = ref(0) // 현재 표시할 문장의 인덱스
     const isVisible = ref(false) // visibility 상태
+    const nextSound =ref(null)
 
     // 문장을 한 글자씩 표시하는 함수
     const typeText = (fullText) => {
@@ -47,6 +49,7 @@ export default {
     const goNext = () => {
       // 다음 문장으로 이동
       if (currentTextIndex.value < texts.length - 1) {
+        playSound(nextSound)
         currentTextIndex.value++
         displayedText.value = '' // 이전 텍스트 지우기
         index.value = 0 // 인덱스 초기화
@@ -62,13 +65,27 @@ export default {
         router.push('/stage_1') // 다음 페이지로 이동
       }
     }
+    const playSound = (sound) => {
+      if (sound.value) {
+        sound.value.pause() // 이전 소리 멈춤
+        sound.value.currentTime = 0 // 소리의 시작 시간 초기화
 
+        // 소리 재생
+        sound.value.play()
+
+        // 소리 재생이 끝났을 때의 동작
+        sound.value.onended = () => {
+          sound.value.pause() // 소리 멈춤
+          sound.value.currentTime = 0 // 시작 시간 초기화
+        }
+      }
+    }
     return {
       showBtn,
       goNext,
       texts,
       displayedText,
-      isVisible
+      isVisible,playSound,nextSound
     }
   }
 }
