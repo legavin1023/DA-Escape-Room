@@ -201,7 +201,7 @@
   <audio ref="bonfireSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화덕소리.mp3"></audio>
   <audio ref="armorSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/갑옷.mp3"></audio>
   <audio ref="gunSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/벽장식_총소리.wav"></audio>
-  <audio ref="frameSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/액자삐걱.mp3"></audio>
+  <audio ref="frameSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/액자삐걱.wav"></audio>
   <audio ref="lockSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/자물쇠.wav"></audio>
   <audio ref="clothSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/천이스치는소리.wav"></audio>
   <audio ref="arrowSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/화살띠용.mp3"></audio>
