@@ -35,7 +35,7 @@
       v-if="showBtn"
       @click="goNext"
     >
-      ->
+      
     </button>
     <div class="effect">
       <!-- 모닥불 -->
@@ -86,11 +86,14 @@
       <div class="lock"></div>
 
       <!-- 화살 -->
-      <div
-        class="arrow"
+      <div class="arrow_box"
+       
         @click="displayText('실내에서 활 연습이라도 했던가?'), click_arrow_btn()"
         :class="{ disabled: isTyping }"
-      ></div>
+      >
+    <div  class="arrow" id="arrow"></div>
+    <div  class="arrow_creck"></div>
+    </div>
     </div>
   </div>
 
@@ -106,8 +109,7 @@
               displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
             }
           "
-          >×</span
-        >
+          >×</span>
         <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
       </div>
     </div>
@@ -213,6 +215,12 @@ import offImage from '@/assets/image/off.png'
 import onImage from '@/assets/image/on.png'
 
 export default {
+  mounted() {
+    // 페이지에 진입하면 오디오 재생
+    this.$audio.play().catch(error => {
+      console.error('오디오 재생 오류:', error);
+    });
+  },
   setup() {
     const count = ref(0)
     const buttonsClicked = ref([false, false, false])
@@ -462,6 +470,14 @@ export default {
 
     const arrowText = ref('arrowText')
     const click_arrow_btn = () => {
+
+      const element = document.getElementById("arrow");
+      element.classList.remove("arrow_move")
+
+      // 강제로 재렌더링 시켜서 애니메이션을 다시 시작
+      void element.offsetWidth; // 트릭으로 리플로우를 강제함
+      element.classList.add("arrow_move")
+
       playSound(arrowSound)
       arrowText.value = true // 텍스트 보여주기
       narrationText.value = 'arrowText'
@@ -591,7 +607,7 @@ export default {
     }
 
     const goNext = () => {
-      playSound(nextSound)
+
       router.push('/stage_2')
     }
 

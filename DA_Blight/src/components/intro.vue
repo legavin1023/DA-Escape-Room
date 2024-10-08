@@ -62,6 +62,7 @@ export default {
           isVisible.value = true // visible을 true로 설정
         }, 300) // 300ms 대기 후 visible 설정
       } else {
+        // playSound(nextSound)
         router.push('/stage_1') // 다음 페이지로 이동
       }
     }
