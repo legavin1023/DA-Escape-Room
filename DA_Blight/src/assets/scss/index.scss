@@ -230,17 +230,20 @@ body {
             font-family: "Pretendard";
             line-height: 27px;
             border-radius: 15px;
+            display: flex;
             span {
                 display: inline-block;
                 text-indent: -9999px;
-                width: 13px;
-                height: 11px;
+                width: 12px;
+                height: 27px;
                 background: url("@/assets/image/check.png");
                 background-repeat: no-repeat;
-                position: relative;
-                top: 8px;
-                margin-right: 10px;
+                background-position: center;
+                margin: 0 8px 0 16px;
             }
+        }
+        &-get::after {
+            content: "단서를 찾았다!";
         }
     }
 
@@ -306,14 +309,16 @@ body {
                 span {
                     display: inline-block;
                     text-indent: -9999px;
-                    width: 13px;
-                    height: 11px;
+                    width: 12px;
+                    height: 27px;
                     background: url("@/assets/image/check_done.png");
                     background-repeat: no-repeat;
-                    position: relative;
-                    top: 8px;
-                    margin-right: 10px;
+                    background-position: center;
+                    margin: 0 8px 0 10px;
                 }
+            }
+            &-get::after {
+                content: "이미 찾은 단서야";
             }
         }
     }

@@ -34,9 +34,7 @@
       :class="{ disabled: activeModal !== null }"
       v-if="showBtn"
       @click="goNext"
-    >
-      
-    </button>
+    ></button>
     <div class="effect">
       <!-- 모닥불 -->
       <div class="bonfire"></div>
@@ -86,14 +84,14 @@
       <div class="lock"></div>
 
       <!-- 화살 -->
-      <div class="arrow_box"
-       
+      <div
+        class="arrow_box"
         @click="displayText('실내에서 활 연습이라도 했던가?'), click_arrow_btn()"
         :class="{ disabled: isTyping }"
       >
-    <div  class="arrow" id="arrow"></div>
-    <div  class="arrow_creck"></div>
-    </div>
+        <div class="arrow" id="arrow"></div>
+        <div class="arrow_creck"></div>
+      </div>
     </div>
   </div>
 
@@ -109,8 +107,9 @@
               displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
             }
           "
-          >×</span>
-        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+          >×</span
+        >
+        <p class="modal-content-get"><span></span></p>
       </div>
     </div>
   </div>
@@ -121,7 +120,9 @@
         @click="
           openNestedModal(2),
             displayText(
-              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?')"
+              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
+            )
+        "
       ></button>
       <span
         class="close"
@@ -149,7 +150,7 @@
           "
           >×</span
         >
-        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+        <p class="modal-content-get"><span></span></p>
       </div>
     </div>
   </div>
@@ -191,20 +192,50 @@
           "
           >×</span
         >
-        <p class="modal-content-get"><span>체크</span>단서를 찾았다!</p>
+        <p class="modal-content-get"><span></span></p>
       </div>
     </div>
   </div>
-  <audio ref="nextSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"></audio>
-  <audio ref="boneSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/달그락 소리.mp3"></audio>
-  <audio ref="lightSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/불소리.mp3"></audio>
-  <audio ref="bonfireSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화덕소리.mp3"></audio>
-  <audio ref="armorSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/갑옷.mp3"></audio>
-  <audio ref="gunSound" src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/벽장식_총소리.wav"></audio>
-  <audio ref="frameSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/액자삐걱.wav"></audio>
-  <audio ref="lockSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/자물쇠.wav"></audio>
-  <audio ref="clothSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/천이스치는소리.wav"></audio>
-  <audio ref="arrowSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/화살띠용.mp3"></audio>
+  <audio
+    ref="nextSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"
+  ></audio>
+  <audio
+    ref="boneSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/달그락 소리.mp3"
+  ></audio>
+  <audio
+    ref="lightSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/불소리.mp3"
+  ></audio>
+  <audio
+    ref="bonfireSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/화덕소리.mp3"
+  ></audio>
+  <audio
+    ref="armorSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/갑옷.mp3"
+  ></audio>
+  <audio
+    ref="gunSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound//map_1/벽장식_총소리.wav"
+  ></audio>
+  <audio
+    ref="frameSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/액자삐걱.wav"
+  ></audio>
+  <audio
+    ref="lockSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/자물쇠.wav"
+  ></audio>
+  <audio
+    ref="clothSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/천이스치는소리.wav"
+  ></audio>
+  <audio
+    ref="arrowSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/화살띠용.mp3"
+  ></audio>
 </template>
 
 <script>
@@ -217,9 +248,9 @@ import onImage from '@/assets/image/on.png'
 export default {
   mounted() {
     // 페이지에 진입하면 오디오 재생
-    this.$audio.play().catch(error => {
-      console.error('오디오 재생 오류:', error);
-    });
+    this.$audio.play().catch((error) => {
+      console.error('오디오 재생 오류:', error)
+    })
   },
   setup() {
     const count = ref(0)
@@ -243,7 +274,7 @@ export default {
 
     const collectImages = ref([image1, image2, image3])
 
-    const nextSound =ref(null)
+    const nextSound = ref(null)
     const boneSound = ref(null)
     const lightSound = ref(null)
     const bonfireSound = ref(null)
@@ -254,7 +285,6 @@ export default {
     const clothSound = ref(null)
     const arrowSound = ref(null)
 
-    //---------------------------------------------
     const defaultText = ref('모닥불이 실내의 찬 공기를 데우고 있다.')
     const fullText = ref('')
     const displayedText = ref('')
@@ -326,10 +356,10 @@ export default {
         !activeNestedModal2.value &&
         !activeNestedModal3.value
       ) {
-        // 4초 후에 기본 텍스트로 변경
-        resetTimeout = setTimeout(() => {
-          displayedText.value = defaultText.value
-        }, 4000)
+        // // 4초 후에 기본 텍스트로 변경
+        // resetTimeout = setTimeout(() => {
+        //   displayedText.value = defaultText.value
+        // }, 4000)
       }
     }
 
@@ -410,7 +440,7 @@ export default {
     const lockText = ref('lockText')
 
     const click_lock_btn = () => {
-       playSound(lockSound)
+      playSound(lockSound)
       click_lock.value = !click_lock.value
       narrationText.value = 'lockText'
       lockText.value = true // 텍스트 보여주기
@@ -470,13 +500,12 @@ export default {
 
     const arrowText = ref('arrowText')
     const click_arrow_btn = () => {
-
-      const element = document.getElementById("arrow");
-      element.classList.remove("arrow_move")
+      const element = document.getElementById('arrow')
+      element.classList.remove('arrow_move')
 
       // 강제로 재렌더링 시켜서 애니메이션을 다시 시작
-      void element.offsetWidth; // 트릭으로 리플로우를 강제함
-      element.classList.add("arrow_move")
+      void element.offsetWidth // 트릭으로 리플로우를 강제함
+      element.classList.add('arrow_move')
 
       playSound(arrowSound)
       arrowText.value = true // 텍스트 보여주기
@@ -499,7 +528,7 @@ export default {
 
     const frameText = ref('frameText')
     const click_frame_light_btn = () => {
-     playSound(frameSound)
+      playSound(frameSound)
       frameText.value = true // 텍스트 보여주기
       narrationText.value = 'frameText'
       activeModal.value = 100
@@ -521,6 +550,7 @@ export default {
     }
 
     //-------------------------------------------------------------
+
     // 모든 이미지가 변경되었는지 확인
     const checkImagesChanged = () => {
       const allImagesChanged = collectImages.value.every((img) => img === onImage)
@@ -607,7 +637,6 @@ export default {
     }
 
     const goNext = () => {
-
       router.push('/stage_2')
     }
 
