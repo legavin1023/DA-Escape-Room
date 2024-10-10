@@ -109,7 +109,7 @@
           "
           >×</span
         >
-        <p class="modal-content-get"><span></span></p>
+        <p class="modal-content-get"><span>체크</span></p>
       </div>
     </div>
   </div>
@@ -150,7 +150,7 @@
           "
           >×</span
         >
-        <p class="modal-content-get"><span></span></p>
+        <p class="modal-content-get"><span>체크</span></p>
       </div>
     </div>
   </div>
@@ -192,7 +192,7 @@
           "
           >×</span
         >
-        <p class="modal-content-get"><span></span></p>
+        <p class="modal-content-get"><span>체크</span></p>
       </div>
     </div>
   </div>
@@ -260,10 +260,6 @@ export default {
     const activeModal = ref(null)
     const activeNestedModal2 = ref(false)
     const activeNestedModal3 = ref(false)
-
-    let timer = null
-
-    const narrationText = ref('')
 
     const image1 = offImage
     const image2 = offImage
@@ -349,18 +345,18 @@ export default {
         }
       }, 1) // 잠시 후에 오퍼시티를 1로 증가시키도록 설정
 
-      if (
-        activeModal.value !== 1 &&
-        activeModal.value !== 2 &&
-        activeModal.value !== 3 &&
-        !activeNestedModal2.value &&
-        !activeNestedModal3.value
-      ) {
-        // // 4초 후에 기본 텍스트로 변경
-        // resetTimeout = setTimeout(() => {
-        //   displayedText.value = defaultText.value
-        // }, 4000)
-      }
+      // if (
+      //   activeModal.value !== 1 &&
+      //   activeModal.value !== 2 &&
+      //   activeModal.value !== 3 &&
+      //   !activeNestedModal2.value &&
+      //   !activeNestedModal3.value
+      // ) {
+      //   // 4초 후에 기본 텍스트로 변경
+      //   resetTimeout = setTimeout(() => {
+      //     displayedText.value = defaultText.value
+      //   }, 4000)
+      // }
     }
 
     //--------------------------------------------
@@ -380,9 +376,6 @@ export default {
       }
     }
     // 클릭 시 클래스 활성화
-    const click_light_1 = ref(false)
-    const click_light_2 = ref(false)
-    const candleText = ref('candleText')
 
     const handleAnimation = (selector, animationClass, delay) => {
       const element = document.querySelector(selector)
@@ -397,156 +390,32 @@ export default {
     const click_light_btn_1 = () => {
       playSound(lightSound)
       handleAnimation('.light_1', 'light_hidden', 600)
-      click_light_1.value = !click_light_1.value
-      narrationText.value = 'candleText'
-      activeModal.value = 100
-      candleText.value = true // 텍스트 보여주기
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        candleText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
     }
 
     const click_light_btn_2 = () => {
       playSound(lightSound)
       handleAnimation('.light_2', 'light_hidden', 600)
-      click_light_2.value = !click_light_2.value
-      narrationText.value = 'candleText'
-      activeModal.value = 100
-      candleText.value = true // 텍스트 보여주기
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        candleText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
     }
-
-    const click_lock = ref(false)
-    const lockText = ref('lockText')
 
     const click_lock_btn = () => {
       playSound(lockSound)
-      click_lock.value = !click_lock.value
-      narrationText.value = 'lockText'
-      lockText.value = true // 텍스트 보여주기
-      activeModal.value = 100
 
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        lockText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
-
-      const lock = document.querySelector('.lock')
-      if (click_lock.value) {
-        lock.classList.add('lock_move')
-        setTimeout(() => {
-          lock.classList.remove('lock_move')
-        }, 800)
-      } else {
-        lock.classList.remove('lock_move')
-      }
+      handleAnimation('.lock', 'lock_move', 600)
     }
 
-    const boneText = ref('boneText')
     const click_bone_btn = () => {
       playSound(boneSound)
-      boneText.value = true // 텍스트 보여주기
-      narrationText.value = 'boneText'
-      activeModal.value = 100
 
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        boneText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
-
-      // 뼈 요소의 애니메이션 처리
-      const bone = document.querySelector('.bone')
-      bone.classList.add('bone_move') // 항상 뼈 애니메이션 추가
-      setTimeout(() => {
-        bone.classList.remove('bone_move')
-      }, 800)
+      handleAnimation('.bone', 'bone_move', 800)
     }
 
-    const arrowText = ref('arrowText')
     const click_arrow_btn = () => {
-      const element = document.getElementById('arrow')
-      element.classList.remove('arrow_move')
-
-      // 강제로 재렌더링 시켜서 애니메이션을 다시 시작
-      void element.offsetWidth // 트릭으로 리플로우를 강제함
-      element.classList.add('arrow_move')
-
       playSound(arrowSound)
-      arrowText.value = true // 텍스트 보여주기
-      narrationText.value = 'arrowText'
-      activeModal.value = 100
-
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        arrowText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
+      handleAnimation('.arrow', 'arrow_move', 1600)
     }
 
-    const frameText = ref('frameText')
     const click_frame_light_btn = () => {
       playSound(frameSound)
-      frameText.value = true // 텍스트 보여주기
-      narrationText.value = 'frameText'
-      activeModal.value = 100
-
-      // 이전 타이머 클리어
-      if (timer) {
-        clearTimeout(timer)
-      }
-
-      // 새로운 타이머 설정
-      timer = setTimeout(() => {
-        frameText.value = false // 텍스트 숨기기
-        if (activeModal.value !== 1 && activeModal.value !== 2 && activeModal.value !== 3) {
-          activeModal.value = null
-        }
-      }, 3000)
-
-      handleAnimation('.frame_light', 'frame_light_hidden', 600)
     }
 
     //-------------------------------------------------------------
@@ -658,16 +527,10 @@ export default {
       handleAnimation,
       click_light_btn_1,
       click_light_btn_2,
-      candleText,
       click_lock_btn,
-      lockText,
       click_bone_btn,
-      boneText,
       click_arrow_btn,
-      arrowText,
       click_frame_light_btn,
-      frameText,
-      narrationText,
       nextSound,
       boneSound,
       lightSound,
