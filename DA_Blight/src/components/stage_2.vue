@@ -16,7 +16,7 @@
       @click="
         openModal(3),
           displayText(
-            '독특한 문양이 그려진 목걸이가 걸려 있다.누군가 늘 지니고 다녔던 듯 조금 흠집이 나 있다.'
+            '독특한 문양이 그려진 목걸이가 걸려 있다. 누군가 늘 지니고 다녔던 듯 조금 흠집이 나 있다.'
           )
       "
     ></button>
@@ -60,7 +60,7 @@
       ></div>
       <!-- 지도 -->
       <div
-        class="map_box"
+        class="map_btn"
         @click="
           displayText('내일은... 어디로 가기로 했더라...? 그전에 우리가 어디서 왔었지?'),
             click_map_btn()
@@ -73,7 +73,7 @@
   <div class="modal_box_1">
     <!-- 첫 번째 모달 -->
     <div v-if="activeModal === 1" class="modal">
-      <div class="modal-content modal_1_1">
+      <div class="modal-content modal_2_1">
         <span
           class="close"
           @click="
@@ -90,7 +90,7 @@
   </div>
   <!-- 두 번째 모달 -->
   <div v-if="activeModal === 2" class="modal">
-    <div class="modal-content modal_1_2_1">
+    <div class="modal-content modal_2_2_1">
       <button
         @click="openNestedModal(2), displayText('잘 보관된 인형이다.왠지 섬뜩하다.')"
       ></button>
@@ -109,7 +109,7 @@
   <div class="modal_box_2">
     <!-- 두 번째 모달 안의 모달 -->
     <div v-if="activeNestedModal2" class="modal">
-      <div class="modal-content modal_1_2_2">
+      <div class="modal-content modal_2_2_2">
         <span
           class="close"
           @click="
@@ -128,7 +128,7 @@
   <div class="modal_box_3">
     <!-- 세 번째 모달 -->
     <div v-if="activeModal === 3" class="modal">
-      <div class="modal-content modal_1_1">
+      <div class="modal-content modal_2_3">
         <span
           class="close"
           @click="
@@ -146,7 +146,7 @@
   <div class="modal_box_4">
     <!-- 네 번째 모달 -->
     <div v-if="activeModal === 4" class="modal">
-      <div class="modal-content modal_1_1">
+      <div class="modal-content modal_2_4">
         <span
           class="close"
           @click="
@@ -191,8 +191,12 @@
     src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/초켜는소리.wav"
   ></audio>
   <audio
-    ref="bed2Sound"
+    ref="bed2_1_Sound"
     src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/침대삐걱.wav"
+  ></audio>
+  <audio
+    ref="bed2_2_Sound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/놀라는남자소리.wav"
   ></audio>
 </template>
 <script>
@@ -230,7 +234,8 @@ export default {
 
     const nextSound = ref(null)
     const bed1Sound = ref(null)
-    const bed2Sound = ref(null)
+    const bed2_1_Sound = ref(null)
+    const bed2_2_Sound = ref(null)
     const crowSound = ref(null)
     const necklaceSound = ref(null)
     const mapSound = ref(null)
@@ -319,7 +324,6 @@ export default {
       }
     }
     // 클릭 시 클래스 활성화
-    const click_light = ref(false)
 
     const handleAnimation = (selector, animationClass, delay) => {
       const element = document.querySelector(selector)
@@ -331,25 +335,19 @@ export default {
       }
     }
 
-    const click_candle_btn = () => {
-      playSound(candleSound)
-      handleAnimation('.candle', 'candle_hidden', 600)
-      click_light.value = !click_light.value
-    }
-
     const click_map_btn = () => {
-      playSound(crowSound)
+      playSound(mapSound)
+      handleAnimation('.map_btn', 'map_flap', 2000)
     }
 
     const click_logo_btn = () => {
       playSound(logoSound)
+      handleAnimation('.logo_btn', 'logo_hidden', 600)
     }
 
-    const click_crwow_btn = () => {
+    const click_crow_btn = () => {
       playSound(crowSound)
-
-      // 뼈 요소의 애니메이션 처리
-      handleAnimation('.crwow', 'crwow_move', 600)
+      handleAnimation('.crow_btn', 'crwow_move', 2500)
     }
 
     //-------------------------------------------------------------
@@ -383,29 +381,30 @@ export default {
         }
       } else if (modalNumber === 2) {
         // 두 번째 모달 열 때는 count 증가하지 않음
+        playSound(bed2_1_Sound)
       } else if (modalNumber === 3) {
         playSound(necklaceSound)
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(2) // 첫 번째 이미지 변경
         // 모달이 이미 열렸다면 done 클래스 추가
-        if (modalOpenedOnce1.value) {
+        if (modalOpenedOnce3.value) {
           const modalBox = document.querySelector('.modal_box_3')
           modalBox.classList.add('done')
         } else {
           // 처음 열었을 경우 modalOpenedOnce를 true로 설정
-          modalOpenedOnce1.value = true
+          modalOpenedOnce3.value = true
         }
       } else if (modalNumber === 4) {
         playSound(candleSound)
         count.value++ // 첫 번째 모달을 열 때 count 증가
         changeImage(3) // 첫 번째 이미지 변경
         // 모달이 이미 열렸다면 done 클래스 추가
-        if (modalOpenedOnce1.value) {
+        if (modalOpenedOnce4.value) {
           const modalBox = document.querySelector('.modal_box_4')
           modalBox.classList.add('done')
         } else {
           // 처음 열었을 경우 modalOpenedOnce를 true로 설정
-          modalOpenedOnce1.value = true
+          modalOpenedOnce4.value = true
         }
       }
     }
@@ -423,6 +422,7 @@ export default {
 
         // 모달이 이미 열렸다면 done 클래스 추가
         if (modalOpenedOnce2.value) {
+          playSound(bed2_2_Sound)
           const modalBox = document.querySelector('.modal_box_2')
           modalBox.classList.add('done')
         } else {
@@ -461,14 +461,13 @@ export default {
       activeModal,
       activeNestedModal2,
       handleAnimation,
-      click_candle_btn,
       click_map_btn,
       click_logo_btn,
-      click_crwow_btn,
+      click_crow_btn,
       playSound,
       nextSound,
       bed1Sound,
-      bed2Sound,
+      bed2_1_Sound,
       crowSound,
       necklaceSound,
       mapSound,
@@ -481,7 +480,8 @@ export default {
       modalOpenedOnce1,
       modalOpenedOnce2,
       modalOpenedOnce3,
-      modalOpenedOnce4
+      modalOpenedOnce4,
+      bed2_2_Sound
     }
   }
 }
