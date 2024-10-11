@@ -137,7 +137,7 @@
   ></audio>
   <audio
     ref="loveSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/사랑.wav"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/사랑.wav"
   ></audio>
   <audio
     ref="mirrorSound"
