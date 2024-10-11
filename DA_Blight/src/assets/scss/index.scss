@@ -1,0 +1,810 @@
+@font-face {
+    font-family: "GabiaNull-Regular";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2409-2@1.0/GabiaNull-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Pretendard";
+    src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+body {
+    height: 100%;
+    background: #222;
+    color: #eee;
+}
+#app {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sound {
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+    width: 900px;
+    height: 40px;
+    font-size: 14px;
+    &_btn {
+        color: #303030;
+        font-family: "Pretendard";
+        z-index: 120;
+        p {
+            line-height: 40px;
+            span {
+                margin: 0 6px 16px 8px;
+            }
+        }
+        .play {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url("@/assets/image/Property 1=Default.png");
+            text-indent: -9999px;
+        }
+        .pause {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url("@/assets/image/Property 1=Variant2.png");
+            text-indent: -9999px;
+        }
+    }
+}
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.page {
+    position: relative;
+    width: 900px;
+    height: 600px;
+    background: #000;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+}
+.main {
+    background-image: url("@/assets/image/display_area.png");
+    background-repeat: no-repeat;
+    .start {
+        width: 243px;
+        height: 76px;
+        background: #070909;
+        border: 3px solid #252525;
+        border-radius: 38px;
+        margin-bottom: 90px;
+        font-size: 30px;
+        color: #d4d4d4;
+        font-family: "Pretendard";
+        cursor: pointer;
+    }
+}
+.intro {
+    font-family: "GabiaNull-Regular";
+    font-size: 20px;
+    line-height: 30px;
+    background-image: url("@/assets/image/map1/background_1.png");
+    background-repeat: no-repeat;
+    @keyframes fadeEffect {
+        0%,
+        100% {
+            opacity: 0.84; /* 시작과 끝에서 불투명도 0 */
+        }
+        50% {
+            opacity: 1; /* 중간에서 불투명도 1 */
+        }
+    }
+    .dim {
+        width: 900px;
+        height: 600px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background: #000;
+        opacity: 0.84;
+        animation: fadeEffect 2s infinite;
+    }
+    span {
+        display: block;
+    }
+}
+.narration {
+    width: 900px;
+    height: 144px;
+    bottom: 0;
+    background: #101010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "GabiaNull-Regular";
+    font-size: 20px;
+    line-height: 30px;
+    z-index: 500;
+
+    &-border {
+        width: 885px;
+        height: 130px;
+        border: 1px solid #222222;
+    }
+    @keyframes opacity_text {
+        0% {
+            opacity: 0;
+        }
+        60% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    &-text {
+        display: inline-block;
+        padding: 20px 54px 0 54px;
+        opacity: 0;
+        transition: opacity_text 0.4s ease; /* 애니메이션 효과 */
+        color: #9f9f9f;
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+}
+.visible {
+    opacity: 1; /* 보이도록 변경 */
+}
+.collect {
+    position: absolute;
+    bottom: 134px;
+    right: 30px;
+    width: 152px;
+    height: 182px;
+    background-image: url("@/assets/image/clue_ui.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
+    z-index: 200;
+
+    &-nextBtn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        bottom: 118px;
+        width: 57px;
+        height: 53px;
+        background-image: url("@/assets/image/next_btn.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: transparent;
+        z-index: 550;
+    }
+    &-1 {
+        position: absolute;
+        top: 44px;
+        left: 20px;
+    }
+    &-2 {
+        position: absolute;
+        top: 44px;
+        left: 94px;
+    }
+    &-3 {
+        position: absolute;
+        top: 124px;
+        left: 20px;
+    }
+    &-4 {
+        position: absolute;
+        top: 124px;
+        left: 94px;
+    }
+}
+
+/* 모달 */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+
+    &-content {
+        width: 244px;
+        height: 281px;
+        position: relative;
+        top: -50px;
+        text-align: center;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        &-get {
+            width: 145px;
+            height: 27px;
+            background-color: #e78326;
+            columns: #fff;
+            font-size: 16px;
+            font-family: "Pretendard";
+            line-height: 27px;
+            border-radius: 15px;
+            display: flex;
+            span {
+                display: inline-block;
+                text-indent: -9999px;
+                width: 12px;
+                height: 27px;
+                background: url("@/assets/image/check.png");
+                background-repeat: no-repeat;
+                background-position: center;
+                margin: 0 8px 0 16px;
+            }
+        }
+        &-get::after {
+            content: "단서를 찾았다!";
+        }
+    }
+
+    .close {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 34px;
+        height: 34px;
+        background-image: url("@/assets/image/arrow_back.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: transparent;
+        z-index: 100;
+        cursor: pointer;
+    }
+    .modal_1_1 {
+        background: url("@/assets/image/map1/map_1_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_1_2_1 {
+        background: url("@/assets/image/map1/map_1_2_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 54px;
+            top: 80px;
+            width: 136px;
+            height: 140px;
+            background: transparent;
+        }
+    }
+    .modal_1_2_2 {
+        background: url("@/assets/image/map1/map_1_2_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_1_3_1 {
+        background: url("@/assets/image/map1/map_1_3_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 90px;
+            top: 140px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+        }
+    }
+    .modal_1_3_2 {
+        background: url("@/assets/image/map1/map_1_3_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_2_1 {
+        background: url("@/assets/image/map2/map_2_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_2_2_1 {
+        background: url("@/assets/image/map2/map_2_2_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 110px;
+            top: 190px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+        }
+    }
+    .modal_2_2_2 {
+        background: url("@/assets/image/map2/map_2_2_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_2_3 {
+        background: url("@/assets/image/map2/map_2_3.png");
+        background-repeat: no-repeat;
+    }
+    .modal_2_4 {
+        background: url("@/assets/image/map2/map_2_4.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_1 {
+        background: url("@/assets/image/map3/map_3_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_2_1 {
+        background: url("@/assets/image/map3/map_3_2_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 240px;
+            height: 240px;
+            background: transparent;
+        }
+    }
+    .modal_3_2_2 {
+        background: url("@/assets/image/map3/map_3_2_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_3_1 {
+        background: url("@/assets/image/map3/map_3_3_1.png");
+        background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 240px;
+            height: 240px;
+            background: transparent;
+        }
+    }
+    .modal_3_3_2 {
+        background: url("@/assets/image/map3/map_3_3_2.png");
+        background-repeat: no-repeat;
+    }
+}
+
+.done {
+    .modal {
+        &-content {
+            &-get {
+                background-color: #797979;
+                span {
+                    display: inline-block;
+                    text-indent: -9999px;
+                    width: 12px;
+                    height: 27px;
+                    background: url("@/assets/image/check_done.png");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    margin: 0 8px 0 10px;
+                }
+            }
+            &-get::after {
+                content: "이미 찾은 단서야";
+            }
+        }
+    }
+}
+
+/* 모달이 열린 상태에서 스크롤 금지 */
+body.modal-open {
+    overflow: hidden;
+}
+
+.map1 {
+    background-image: url("@/assets/image/map1/background_1.png");
+    background-repeat: no-repeat;
+    .page-1-1 {
+        width: 160px;
+        height: 200px;
+        background: transparent;
+        position: absolute;
+        top: 54px;
+        cursor: pointer;
+    }
+    .page-1-2 {
+        width: 80px;
+        height: 80px;
+        background: transparent;
+        position: absolute;
+        top: 370px;
+        cursor: pointer;
+    }
+    .page-1-3 {
+        width: 80px;
+        height: 100px;
+        background: transparent;
+        position: absolute;
+        top: 356px;
+        left: 246px;
+        cursor: pointer;
+    }
+    .effect {
+        color: transparent;
+        cursor: pointer;
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .bonfire {
+            opacity: 1; /* 초기 상태 */
+            animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
+            position: absolute;
+            left: 299px;
+            top: 260px;
+            width: 299px;
+            height: 260px;
+            background: url("@/assets/image/map1/bonfire.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        .light_btn_1 {
+            position: absolute;
+            left: 326px;
+            top: 200px;
+            width: 40px;
+            height: 80px;
+            z-index: 20;
+        }
+
+        .light_btn_2 {
+            position: absolute;
+            left: 510px;
+            top: 180px;
+            width: 70px;
+            height: 100px;
+            z-index: 20;
+        }
+        .light_1 {
+            position: absolute;
+            left: 234px;
+            top: 104px;
+            width: 194px;
+            height: 217px;
+            background: url("@/assets/image/map1/light_1.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 1; /* 초기 상태 */
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .light_2 {
+            position: absolute;
+            left: 430px;
+            top: 80px;
+            width: 218px;
+            height: 218px;
+            background: url("@/assets/image/map1/light_2.png");
+            background-repeat: no-repeat;
+            pointer-events: none;
+            opacity: 1; /* 초기 상태 */
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .light_hidden {
+            opacity: 0; /* 숨김 상태 */
+        }
+        @keyframes shake_lock {
+            0% {
+                transform: rotate(0deg); /* 초기 상태 */
+            }
+            25% {
+                transform: rotate(-10deg); /* 왼쪽으로 회전 */
+            }
+            50% {
+                transform: rotate(10deg); /* 오른쪽으로 회전 */
+            }
+            75% {
+                transform: rotate(-10deg); /* 다시 왼쪽으로 회전 */
+            }
+            100% {
+                transform: rotate(0deg); /* 원래 위치로 돌아오기 */
+            }
+        }
+        .bone {
+            position: absolute;
+            left: 105px;
+            top: 377px;
+            width: 71px;
+            height: 23px;
+            background: url("@/assets/image/map1/bone.png");
+            background-repeat: no-repeat;
+        }
+        .bone_move {
+            animation: shake_lock 0.5s ease-in-out;
+        }
+
+        .lock_btn {
+            position: absolute;
+            left: 10px;
+            bottom: 140px;
+            width: 220px;
+            height: 60px;
+            z-index: 20;
+        }
+        .lock {
+            position: absolute;
+            left: 116px;
+            bottom: 170px;
+            width: 12px;
+            height: 24px;
+            background: url("@/assets/image/map1/lock.png");
+            background-repeat: no-repeat;
+            transform: translateX(0); /* 초기 위치 설정 */
+            transform-origin: center; /* 중심에서 흔들리도록 설정 */
+        }
+        .lock_move {
+            animation: shake_lock 0.5s ease-in-out;
+        }
+        .arrow_box {
+            position: absolute;
+            left: 80px;
+            top: 80px;
+            width: 57px;
+            height: 57px;
+            background-repeat: no-repeat;
+        }
+        @keyframes rotateArrow {
+            0% {
+                transform: rotate(0deg); /* 시작 위치 */
+            }
+            50% {
+                transform: rotate(-30deg); /* 왼쪽으로 회전 */
+            }
+            100% {
+                transform: rotate(0deg); /* 다시 제자리 */
+            }
+        }
+        .arrow {
+            width: 52px;
+            height: 56px;
+            background: url("@/assets/image/map1/화살움직.png");
+            background-repeat: no-repeat;
+        }
+        .arrow_move {
+            transform-origin: right 38px; /* 회전 축을 오른쪽 가운데로 설정 */
+            animation: rotateArrow 1s;
+        }
+        .arrow_creck {
+            position: relative;
+            top: -42px;
+            left: 40px;
+            width: 18px;
+            height: 40px;
+            background: url("@/assets/image/map1/화살고정.png");
+            background-repeat: no-repeat;
+        }
+        .frame_light {
+            position: absolute;
+            left: 590px;
+            top: 38px;
+            width: 310px;
+            height: 234px;
+            background: url("@/assets/image/map1/frame_light.png");
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 1.5s ease-in-out; /* 서서히 변경되는 시간 설정 */
+        }
+        .frame_light_hidden {
+            opacity: 0;
+        }
+    }
+}
+.map2 {
+    background-image: url("@/assets/image/map2/background_2.png");
+    background-repeat: no-repeat;
+    .page-2-1 {
+        width: 300px;
+        height: 40px;
+        background: transparent;
+        position: absolute;
+        bottom: 144px;
+        cursor: pointer;
+        z-index: 3;
+    }
+    .page-2-2 {
+        width: 100px;
+        height: 100px;
+        background: transparent;
+        position: absolute;
+        top: 370px;
+        right: 220px;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .page-2-3 {
+        width: 30px;
+        height: 50px;
+        background: transparent;
+        position: absolute;
+        top: 160px;
+        left: 310px;
+        cursor: pointer;
+    }
+    .page-2-4 {
+        width: 80px;
+        height: 100px;
+        background: transparent;
+        position: absolute;
+        top: 270px;
+        left: 342px;
+        cursor: pointer;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    .candle {
+        width: 200px;
+        height: 200px;
+        background: url("@/assets/image/map2/candle.png");
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 212px;
+        left: 286px;
+        opacity: 1;
+        animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
+        cursor: pointer;
+    }
+    .effect {
+        color: transparent;
+        cursor: pointer;
+        .logo_btn {
+            position: absolute;
+            top: 24px;
+            left: 170px;
+            width: 151px;
+            height: 90px;
+            background: url("@/assets/image/map2/logo.png");
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .logo_hidden {
+            opacity: 0.5; /* 숨김 상태 */
+        }
+        .crow_btn {
+            position: absolute;
+            top: 86px;
+            right: 340px;
+            width: 45px;
+            height: 34px;
+            background: url("@/assets/image/map2/crow.png");
+            background-repeat: no-repeat;
+        }
+        @keyframes rotateCrow {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-30deg);
+            }
+            75% {
+                transform: rotate(30deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        .crwow_move {
+            transform-origin: center bottom;
+            animation: rotateCrow 1.5s;
+        }
+        @keyframes flap {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            50% {
+                transform: rotateX(15deg) rotateY(-10deg);
+            }
+
+            100% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+        }
+        .map_btn {
+            position: absolute;
+            top: 160px;
+            right: 160px;
+            width: 82px;
+            height: 60px;
+            background: url("@/assets/image/map2/map.png");
+            background-repeat: no-repeat;
+        }
+        .map_flap {
+            transform-origin: left top; /* 아래쪽을 중심으로 회전 */
+            animation: flap 2s;
+        }
+    }
+}
+.map3 {
+    background-image: url("@/assets/image/map3/background_3.png");
+    background-repeat: no-repeat;
+    .page-3-1 {
+        display: block;
+        position: absolute;
+        top: 90px;
+        left: 280px;
+        width: 320px;
+        height: 300px;
+        background: transparent;
+        cursor: pointer;
+    }
+    @keyframes blurred-image {
+        20% {
+            filter: blur(0px);
+        }
+        50% {
+            filter: blur(4px);
+        }
+        70% {
+            filter: blur(0px);
+        }
+    }
+
+    .page-3-2 {
+        background-image: url("@/assets/image/map3/shadow2.png");
+        width: 170px;
+        height: 284px;
+        position: absolute;
+        bottom: 138px;
+        right: 140px;
+        cursor: pointer;
+        animation: blurred-image 2s ease-in-out infinite;
+        filter: blur(0px);
+    }
+    .page-3-3 {
+        background-image: url("@/assets/image/map3/shadow1.png");
+        width: 189px;
+        height: 284px;
+        position: absolute;
+        bottom: 138px;
+        left: 60px;
+        cursor: pointer;
+        animation: blurred-image 2s ease-in-out infinite;
+        filter: blur(0px);
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0.6;
+        }
+    }
+    .effect {
+        .bonfire {
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: 200px;
+            width: 427px;
+            height: 413px;
+            background-image: url("@/assets/image/map3/camp_light.png");
+            pointer-events: none;
+            opacity: 1;
+            animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
+            cursor: pointer;
+        }
+    }
+}
