@@ -184,7 +184,7 @@
   ></audio>
   <audio
     ref="logoSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/용브레쓰.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/로고.wav"
   ></audio>
   <audio
     ref="candleSound"

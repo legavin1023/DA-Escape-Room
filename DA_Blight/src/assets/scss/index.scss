@@ -167,13 +167,13 @@ body {
 }
 .collect {
     position: absolute;
-    bottom: 134px;
+    bottom: 132px;
     right: 30px;
     width: 152px;
-    height: 186px;
+    height: 182px;
     background-image: url("@/assets/image/clue_ui.png");
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
     z-index: 200;
 
@@ -202,12 +202,12 @@ body {
     }
     &-3 {
         position: absolute;
-        top: 124px;
+        top: 116px;
         left: 20px;
     }
     &-4 {
         position: absolute;
-        top: 124px;
+        top: 116px;
         left: 94px;
     }
 }
