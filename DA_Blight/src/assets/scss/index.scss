@@ -754,8 +754,14 @@ body.modal-open {
         cursor: pointer;
     }
     @keyframes blurred-image {
+        20% {
+            filter: blur(0px);
+        }
         50% {
-            filter: blur(5px);
+            filter: blur(4px);
+        }
+        70% {
+            filter: blur(0px);
         }
     }
 
@@ -764,22 +770,22 @@ body.modal-open {
         width: 170px;
         height: 284px;
         position: absolute;
-        bottom: 140px;
+        bottom: 138px;
         right: 140px;
         cursor: pointer;
         animation: blurred-image 2s ease-in-out infinite;
-        filter: blur(1px);
+        filter: blur(0px);
     }
     .page-3-3 {
         background-image: url("@/assets/image/map3/shadow1.png");
         width: 189px;
         height: 284px;
         position: absolute;
-        bottom: 140px;
+        bottom: 138px;
         left: 60px;
         cursor: pointer;
         animation: blurred-image 2s ease-in-out infinite;
-        filter: blur(2px);
+        filter: blur(0px);
     }
     @keyframes blink {
         50% {
