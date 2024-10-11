@@ -137,11 +137,11 @@
   ></audio>
   <audio
     ref="loveSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/사랑.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_1/사랑.wav"
   ></audio>
   <audio
     ref="mirrorSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/손거울.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/손거울.wav"
   ></audio>
   <audio
     ref="windowSound"
