@@ -8,13 +8,16 @@
     </div>
     <button class="collect-nextBtn" v-if="showBtn" @click="goNext">-></button>
   </div>
-    <audio ref="nextSound" src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"></audio>
+  <audio
+    ref="nextSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"
+  ></audio>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
+import { Base64 } from 'js-base64'
 const texts = ['머리가 너무 아프다.', '어떻게, 어떻게 된 거지? 여긴 어디지?', '나는, 누구지?']
 
 export default {
@@ -27,7 +30,7 @@ export default {
     const index = ref(0) // 글자 인덱스
     const currentTextIndex = ref(0) // 현재 표시할 문장의 인덱스
     const isVisible = ref(false) // visibility 상태
-    const nextSound =ref(null)
+    const nextSound = ref(null)
 
     // 문장을 한 글자씩 표시하는 함수
     const typeText = (fullText) => {
@@ -63,7 +66,7 @@ export default {
         }, 300) // 300ms 대기 후 visible 설정
       } else {
         // playSound(nextSound)
-        router.push('/stage_1') // 다음 페이지로 이동
+        router.push(`/${Base64.encode('stage_1')}`) // 다음 페이지로 이동
       }
     }
     const playSound = (sound) => {
@@ -86,7 +89,9 @@ export default {
       goNext,
       texts,
       displayedText,
-      isVisible,playSound,nextSound
+      isVisible,
+      playSound,
+      nextSound
     }
   }
 }

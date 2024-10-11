@@ -149,7 +149,7 @@
   ></audio>
   <audio
     ref="breathSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/남자한숨.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/남성한숨.mp3"
   ></audio>
   <audio
     ref="sighSound"
@@ -160,7 +160,7 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
+import { Base64 } from 'js-base64'
 import offImage from '@/assets/image/off.png'
 import onImage from '@/assets/image/on.png'
 
@@ -380,7 +380,7 @@ export default {
     }
 
     const goNext = () => {
-      router.push('/stage_4')
+      router.push(`/${Base64.encode('stage_4')}`)
     }
 
     return {
