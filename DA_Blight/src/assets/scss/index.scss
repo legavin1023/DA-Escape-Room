@@ -350,6 +350,15 @@ body {
     .modal_3_2_1 {
         background: url("@/assets/image/map3/map_3_2_1.png");
         background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 240px;
+            height: 240px;
+            background: transparent;
+        }
     }
     .modal_3_2_2 {
         background: url("@/assets/image/map3/map_3_2_2.png");
@@ -358,6 +367,15 @@ body {
     .modal_3_3_1 {
         background: url("@/assets/image/map3/map_3_3_1.png");
         background-repeat: no-repeat;
+        button {
+            cursor: pointer;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 240px;
+            height: 240px;
+            background: transparent;
+        }
     }
     .modal_3_3_2 {
         background: url("@/assets/image/map3/map_3_3_2.png");
@@ -735,6 +753,12 @@ body.modal-open {
         background: transparent;
         cursor: pointer;
     }
+    @keyframes blurred-image {
+        50% {
+            filter: blur(5px);
+        }
+    }
+
     .page-3-2 {
         background-image: url("@/assets/image/map3/shadow2.png");
         width: 170px;
@@ -743,6 +767,8 @@ body.modal-open {
         bottom: 140px;
         right: 140px;
         cursor: pointer;
+        animation: blurred-image 2s ease-in-out infinite;
+        filter: blur(1px);
     }
     .page-3-3 {
         background-image: url("@/assets/image/map3/shadow1.png");
@@ -752,6 +778,8 @@ body.modal-open {
         bottom: 140px;
         left: 60px;
         cursor: pointer;
+        animation: blurred-image 2s ease-in-out infinite;
+        filter: blur(2px);
     }
     @keyframes blink {
         50% {
