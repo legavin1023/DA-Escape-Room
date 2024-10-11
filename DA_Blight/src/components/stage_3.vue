@@ -145,15 +145,15 @@
   ></audio>
   <audio
     ref="windowSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/창문삐걱.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/창문삐걱.wav"
   ></audio>
   <audio
     ref="breathSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/숨들이마시는소리.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/남자한숨.mp3"
   ></audio>
   <audio
     ref="sighSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/여성한숨.wav"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/여자한숨.mp3"
   ></audio>
 </template>
 

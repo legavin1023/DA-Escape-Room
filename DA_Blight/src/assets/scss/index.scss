@@ -189,6 +189,11 @@ body {
         background-size: cover;
         color: transparent;
         z-index: 550;
+        cursor: pointer;
+        transition: 0.5s ease;
+    }
+    &-nextBtn:hover {
+        background-image: url("@/assets/image/next_btn_hover.png");
     }
     &-1 {
         position: absolute;
