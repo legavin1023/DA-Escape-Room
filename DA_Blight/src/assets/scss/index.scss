@@ -57,7 +57,17 @@ body {
         }
     }
 }
-
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .page {
     position: relative;
     width: 900px;
@@ -159,8 +169,8 @@ body {
     position: absolute;
     bottom: 134px;
     right: 30px;
-    width: 171px;
-    height: 197px;
+    width: 152px;
+    height: 186px;
     background-image: url("@/assets/image/clue_ui.png");
     background-position: center;
     background-size: cover;
@@ -183,22 +193,22 @@ body {
     &-1 {
         position: absolute;
         top: 44px;
-        left: 24px;
+        left: 20px;
     }
     &-2 {
         position: absolute;
         top: 44px;
-        left: 104px;
+        left: 94px;
     }
     &-3 {
         position: absolute;
         top: 124px;
-        left: 24px;
+        left: 20px;
     }
     &-4 {
         position: absolute;
         top: 124px;
-        left: 104px;
+        left: 94px;
     }
 }
 
@@ -333,6 +343,26 @@ body {
         background: url("@/assets/image/map2/map_2_4.png");
         background-repeat: no-repeat;
     }
+    .modal_3_1 {
+        background: url("@/assets/image/map3/map_3_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_2_1 {
+        background: url("@/assets/image/map3/map_3_2_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_2_2 {
+        background: url("@/assets/image/map3/map_3_2_2.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_3_1 {
+        background: url("@/assets/image/map3/map_3_3_1.png");
+        background-repeat: no-repeat;
+    }
+    .modal_3_3_2 {
+        background: url("@/assets/image/map3/map_3_3_2.png");
+        background-repeat: no-repeat;
+    }
 }
 
 .done {
@@ -394,10 +424,15 @@ body.modal-open {
     .effect {
         color: transparent;
         cursor: pointer;
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
         .bonfire {
             opacity: 1; /* 초기 상태 */
-            transition: opacity 1.5s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
+            animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
             position: absolute;
             left: 299px;
             top: 260px;
@@ -559,7 +594,7 @@ body.modal-open {
     }
 }
 .map2 {
-    background-image: url("@/assets/image/map2/backround_2.png");
+    background-image: url("@/assets/image/map2/background_2.png");
     background-repeat: no-repeat;
     .page-2-1 {
         width: 300px;
@@ -597,8 +632,13 @@ body.modal-open {
         top: 270px;
         left: 342px;
         cursor: pointer;
-        // border: 1px solid saddlebrown;
     }
+    @keyframes blink {
+        50% {
+            opacity: 0.6;
+        }
+    }
+
     .candle {
         width: 200px;
         height: 200px;
@@ -607,7 +647,8 @@ body.modal-open {
         position: absolute;
         top: 212px;
         left: 286px;
-        transition: opacity 1.5s ease-in-out;
+        opacity: 1;
+        animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
         cursor: pointer;
     }
     .effect {
@@ -684,32 +725,52 @@ body.modal-open {
 .map3 {
     background-image: url("@/assets/image/map3/background_3.png");
     background-repeat: no-repeat;
-    .page-2-1 {
-        width: 300px;
-        height: 40px;
-        background: transparent;
+    .page-3-1 {
+        display: block;
         position: absolute;
-        bottom: 144px;
+        top: 90px;
+        left: 280px;
+        width: 320px;
+        height: 300px;
+        background: transparent;
         cursor: pointer;
-        z-index: 3;
     }
-    .page-2-2 {
-        width: 100px;
-        height: 100px;
-        background: transparent;
+    .page-3-2 {
+        background-image: url("@/assets/image/map3/shadow2.png");
+        width: 170px;
+        height: 284px;
         position: absolute;
-        top: 370px;
-        right: 220px;
+        bottom: 140px;
+        right: 140px;
         cursor: pointer;
-        z-index: 2;
     }
-    .page-2-3 {
-        width: 30px;
-        height: 50px;
-        background: transparent;
+    .page-3-3 {
+        background-image: url("@/assets/image/map3/shadow1.png");
+        width: 189px;
+        height: 284px;
         position: absolute;
-        top: 160px;
-        left: 310px;
+        bottom: 140px;
+        left: 60px;
         cursor: pointer;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0.6;
+        }
+    }
+    .effect {
+        .bonfire {
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: 200px;
+            width: 427px;
+            height: 413px;
+            background-image: url("@/assets/image/map3/camp_light.png");
+            pointer-events: none;
+            opacity: 1;
+            animation: blink 2s ease-in-out infinite; /* 서서히 변경되는 시간 설정 */
+            cursor: pointer;
+        }
     }
 }

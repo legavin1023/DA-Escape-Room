@@ -2,20 +2,15 @@
   <div class="page map3">
     <button
       class="page-3-1"
-      @click="
-        openModal(1),
-          displayText(
-            '평화로운 때가 되면 사람들은 죽일 동물을 찾아 헤맨다. 그 시기에 사냥당한 사슴의 머리는… 왠지 기묘하다.'
-          )
-      "
+      @click="openModal(1), displayText('오래된 야영지가 보인다.왠지 그리운 느낌이 든다.')"
     ></button>
     <button
       class="page-3-2"
-      @click="openModal(2), displayText('모닥불에서 열기가 전해진다.')"
+      @click="openModal(2), displayText('“난 나와 네 선택을 믿어”')"
     ></button>
     <button
       class="page-3-3"
-      @click="openModal(3), displayText('차곡차곡 정리된 템플러 갑옷이다.')"
+      @click="openModal(3), displayText('그림자는 말이 없다.아니, 말이 없는 건 나인가?')"
     ></button>
     <div class="narration">
       <div class="narration-border">
@@ -35,12 +30,16 @@
       v-if="showBtn"
       @click="goNext"
     ></button>
+    <div class="effect">
+      <!-- 모닥불 -->
+      <div class="bonfire"></div>
+    </div>
   </div>
 
   <div class="modal_box_1">
     <!-- 첫 번째 모달 -->
     <div v-if="activeModal === 1" class="modal">
-      <div class="modal-content modal_1_1">
+      <div class="modal-content modal_3_1">
         <span
           class="close"
           @click="
@@ -57,13 +56,10 @@
   </div>
   <!-- 두 번째 모달 -->
   <div v-if="activeModal === 2" class="modal">
-    <div class="modal-content modal_1_2_1">
+    <div class="modal-content modal_3_2_1">
       <button
         @click="
-          openNestedModal(2),
-            displayText(
-              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
-            )
+          openNestedModal(2), displayText('장미가 덩그러니 놓여있다.소중히 보관한 듯 잘 말라 있다.')
         "
       ></button>
       <span
@@ -81,13 +77,13 @@
   <div class="modal_box_2">
     <!-- 두 번째 모달 안의 모달 -->
     <div v-if="activeNestedModal2" class="modal">
-      <div class="modal-content modal_1_2_2">
+      <div class="modal-content modal_3_2_2">
         <span
           class="close"
           @click="
             (event) => {
               closeNestedModal2()
-              displayText('모닥불에서 열기가 전해진다.')
+              displayText('창문에서 찬 바람이 조금 새어 들어온다.')
             }
           "
           >×</span
@@ -99,13 +95,10 @@
 
   <!-- 세 번째 모달 -->
   <div v-if="activeModal === 3" class="modal">
-    <div class="modal-content modal_1_3_1">
+    <div class="modal-content modal_3_3_1">
       <button
         @click="
-          openNestedModal(3),
-            displayText(
-              '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.'
-            )
+          openNestedModal(3), displayText('방을 비추는 거울이다.내 모습을… 비추고 싶지 않다.')
         "
       ></button>
       <span
@@ -123,13 +116,13 @@
   <div class="modal_box_3">
     <!-- 세 번째 모달 안의 모달 -->
     <div v-if="activeNestedModal3" class="modal">
-      <div class="modal-content modal_1_3_2">
+      <div class="modal-content modal_3_3_2">
         <span
           class="close"
           @click="
             (event) => {
               closeNestedModal3()
-              displayText('차곡차곡 정리된 템플러 갑옷이다.')
+              displayText('그림자는 말이 없다.아니, 말이 없는 건 나인가?')
             }
           "
           >×</span

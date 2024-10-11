@@ -337,7 +337,7 @@ export default {
 
     const click_map_btn = () => {
       playSound(mapSound)
-      handleAnimation('.map_btn', 'map_flap', 2000)
+      handleAnimation('.map_btn', 'map_flap', 1500)
     }
 
     const click_logo_btn = () => {
@@ -419,10 +419,10 @@ export default {
         activeNestedModal2.value = true
         count.value++ // 두 번째 모달의 중첩 모달을 열 때 count 증가
         changeImage(1) // 두 번째 이미지 변경
+        playSound(bed2_2_Sound)
 
         // 모달이 이미 열렸다면 done 클래스 추가
         if (modalOpenedOnce2.value) {
-          playSound(bed2_2_Sound)
           const modalBox = document.querySelector('.modal_box_2')
           modalBox.classList.add('done')
         } else {
