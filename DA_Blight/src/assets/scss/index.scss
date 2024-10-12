@@ -201,7 +201,7 @@ body {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
-    z-index: 100000 !important;
+    z-index: 1000 !important;
 
     &-nextBtn {
         display: block;
@@ -216,7 +216,7 @@ body {
         color: transparent;
         cursor: pointer;
         transition: 0.5s ease;
-        z-index: 1000;
+        z-index: 2000;
     }
     &-nextBtn:hover {
         background-image: url("/image/next_btn_hover.png");
