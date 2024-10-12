@@ -17,7 +17,6 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { Base64 } from 'js-base64'
 const texts = ['머리가 너무 아프다.', '어떻게, 어떻게 된 거지? 여긴 어디지?', '나는, 누구지?']
 
 export default {
@@ -66,7 +65,7 @@ export default {
         }, 300) // 300ms 대기 후 visible 설정
       } else {
         // playSound(nextSound)
-        router.push(`/${Base64.encode('stage_1')}`) // 다음 페이지로 이동
+        router.push('stage_1') // 다음 페이지로 이동
       }
     }
     const playSound = (sound) => {

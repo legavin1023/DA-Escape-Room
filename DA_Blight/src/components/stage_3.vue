@@ -160,7 +160,6 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { Base64 } from 'js-base64'
 import offImage from '@/assets/image/off.png'
 import onImage from '@/assets/image/on.png'
 
@@ -380,7 +379,7 @@ export default {
     }
 
     const goNext = () => {
-      router.push(`/${Base64.encode('stage_4')}`)
+      router.push('stage_4')
     }
 
     return {

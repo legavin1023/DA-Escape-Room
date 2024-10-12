@@ -241,7 +241,6 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { Base64 } from 'js-base64'
 import offImage from '@/assets/image/off.png'
 import onImage from '@/assets/image/on.png'
 
@@ -506,7 +505,7 @@ export default {
     }
 
     const goNext = () => {
-      router.push(`/${Base64.encode('stage_2')}`) // 다음 페이지로 이동
+      router.push('stage_2') // 다음 페이지로 이동
     }
 
     return {
