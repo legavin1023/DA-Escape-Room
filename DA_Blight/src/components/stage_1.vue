@@ -1,5 +1,106 @@
 <template>
   <div class="page map1">
+    <div class="modal_box_1">
+      <!-- 첫 번째 모달 -->
+      <div v-if="activeModal === 1" class="modal">
+        <div class="modal-content modal_1_1">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeModal()
+                displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+    <!-- 두 번째 모달 -->
+    <div v-if="activeModal === 2" class="modal">
+      <div class="modal-content modal_1_2_1">
+        <button
+          @click="
+            openNestedModal(2),
+              displayText(
+                '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
+              )
+          "
+        ></button>
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
+    <div class="modal_box_2">
+      <!-- 두 번째 모달 안의 모달 -->
+      <div v-if="activeNestedModal2" class="modal">
+        <div class="modal-content modal_1_2_2">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeNestedModal2()
+                displayText('모닥불에서 열기가 전해진다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 세 번째 모달 -->
+    <div v-if="activeModal === 3" class="modal">
+      <div class="modal-content modal_1_3_1">
+        <button
+          @click="
+            openNestedModal(3),
+              displayText(
+                '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.'
+              )
+          "
+        ></button>
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
+    <div class="modal_box_3">
+      <!-- 세 번째 모달 안의 모달 -->
+      <div v-if="activeNestedModal3" class="modal">
+        <div class="modal-content modal_1_3_2">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeNestedModal3()
+                displayText('차곡차곡 정리된 템플러 갑옷이다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
     <button
       class="page-1-1"
       @click="
@@ -95,107 +196,6 @@
     </div>
   </div>
 
-  <div class="modal_box_1">
-    <!-- 첫 번째 모달 -->
-    <div v-if="activeModal === 1" class="modal">
-      <div class="modal-content modal_1_1">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeModal()
-              displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-  <!-- 두 번째 모달 -->
-  <div v-if="activeModal === 2" class="modal">
-    <div class="modal-content modal_1_2_1">
-      <button
-        @click="
-          openNestedModal(2),
-            displayText(
-              '대재앙, 다크스폰… 누군가 쓴 일지 같다. 수차례 연구해 빼곡하게 적었던 것 같은데, 대부분 타버려 알아볼 수 없다. 열심히 써놓고 왜 태워버린걸까. 더이상 쓸모가 없어서? 아니면 누군가에게 들키지 않기 위해?'
-            )
-        "
-      ></button>
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
-          }
-        "
-        >×</span
-      >
-    </div>
-  </div>
-  <div class="modal_box_2">
-    <!-- 두 번째 모달 안의 모달 -->
-    <div v-if="activeNestedModal2" class="modal">
-      <div class="modal-content modal_1_2_2">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeNestedModal2()
-              displayText('모닥불에서 열기가 전해진다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 세 번째 모달 -->
-  <div v-if="activeModal === 3" class="modal">
-    <div class="modal-content modal_1_3_1">
-      <button
-        @click="
-          openNestedModal(3),
-            displayText(
-              '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.'
-            )
-        "
-      ></button>
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('모닥불이 실내의 찬 공기를 데우고 있다.')
-          }
-        "
-        >×</span
-      >
-    </div>
-  </div>
-  <div class="modal_box_3">
-    <!-- 세 번째 모달 안의 모달 -->
-    <div v-if="activeNestedModal3" class="modal">
-      <div class="modal-content modal_1_3_2">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeNestedModal3()
-              displayText('차곡차곡 정리된 템플러 갑옷이다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
   <audio
     ref="nextSound"
     src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"

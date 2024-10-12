@@ -1,5 +1,97 @@
 <template>
   <div class="page map2">
+    <div class="modal_box_1">
+      <!-- 첫 번째 모달 -->
+      <div v-if="activeModal === 1" class="modal">
+        <div class="modal-content modal_2_1">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeModal()
+                displayText('편안해보이는 침대다. 오랜만, 이던가?')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+    <!-- 두 번째 모달 -->
+    <div v-if="activeModal === 2" class="modal">
+      <div class="modal-content modal_2_2_1">
+        <button
+          @click="openNestedModal(2), displayText('잘 보관된 인형이다. 왠지 섬뜩하다.')"
+        ></button>
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('편안해보이는 침대다. 오랜만, 이던가?')
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
+    <div class="modal_box_2">
+      <!-- 두 번째 모달 안의 모달 -->
+      <div v-if="activeNestedModal2" class="modal">
+        <div class="modal-content modal_2_2_2">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeNestedModal2()
+                displayText('침대 아래는 잘 관리되어 의외로 깨끗하다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal_box_3">
+      <!-- 세 번째 모달 -->
+      <div v-if="activeModal === 3" class="modal">
+        <div class="modal-content modal_2_3">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeModal()
+                displayText('편안해보이는 침대다. 오랜만, 이던가?')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="modal_box_4">
+      <!-- 네 번째 모달 -->
+      <div v-if="activeModal === 4" class="modal">
+        <div class="modal-content modal_2_4">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeModal()
+                displayText('편안해보이는 침대다. 오랜만, 이던가?')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+
     <button
       class="page-2-1"
       @click="
@@ -67,98 +159,6 @@
         "
         :class="{ disabled: isTyping }"
       ></div>
-    </div>
-  </div>
-
-  <div class="modal_box_1">
-    <!-- 첫 번째 모달 -->
-    <div v-if="activeModal === 1" class="modal">
-      <div class="modal-content modal_2_1">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeModal()
-              displayText('편안해보이는 침대다. 오랜만, 이던가?')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-  <!-- 두 번째 모달 -->
-  <div v-if="activeModal === 2" class="modal">
-    <div class="modal-content modal_2_2_1">
-      <button
-        @click="openNestedModal(2), displayText('잘 보관된 인형이다. 왠지 섬뜩하다.')"
-      ></button>
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('편안해보이는 침대다. 오랜만, 이던가?')
-          }
-        "
-        >×</span
-      >
-    </div>
-  </div>
-  <div class="modal_box_2">
-    <!-- 두 번째 모달 안의 모달 -->
-    <div v-if="activeNestedModal2" class="modal">
-      <div class="modal-content modal_2_2_2">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeNestedModal2()
-              displayText('침대 아래는 잘 관리되어 의외로 깨끗하다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal_box_3">
-    <!-- 세 번째 모달 -->
-    <div v-if="activeModal === 3" class="modal">
-      <div class="modal-content modal_2_3">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeModal()
-              displayText('편안해보이는 침대다. 오랜만, 이던가?')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-  <div class="modal_box_4">
-    <!-- 네 번째 모달 -->
-    <div v-if="activeModal === 4" class="modal">
-      <div class="modal-content modal_2_4">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeModal()
-              displayText('편안해보이는 침대다. 오랜만, 이던가?')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
     </div>
   </div>
 

@@ -191,57 +191,6 @@ body {
 .visible {
     opacity: 1; /* 보이도록 변경 */
 }
-.collect {
-    position: absolute;
-    bottom: 132px;
-    right: 30px;
-    width: 152px;
-    height: 182px;
-    background-image: url("/image/clue_ui.png");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
-    z-index: 1000 !important;
-
-    &-nextBtn {
-        display: block;
-        position: absolute;
-        right: 20px;
-        bottom: 118px;
-        width: 57px;
-        height: 53px;
-        background-image: url("/image/next_btn.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        color: transparent;
-        cursor: pointer;
-        transition: 0.5s ease;
-        z-index: 2000;
-    }
-    &-nextBtn:hover {
-        background-image: url("/image/next_btn_hover.png");
-    }
-    &-1 {
-        position: absolute;
-        top: 44px;
-        left: 20px;
-    }
-    &-2 {
-        position: absolute;
-        top: 44px;
-        left: 94px;
-    }
-    &-3 {
-        position: absolute;
-        top: 116px;
-        left: 20px;
-    }
-    &-4 {
-        position: absolute;
-        top: 116px;
-        left: 94px;
-    }
-}
 
 /* 모달 */
 
@@ -440,6 +389,57 @@ body {
 /* 모달이 열린 상태에서 스크롤 금지 */
 body.modal-open {
     overflow: hidden;
+}
+.collect {
+    position: absolute;
+    bottom: 132px;
+    right: 30px;
+    width: 152px;
+    height: 182px;
+    background-image: url("/image/clue_ui.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
+    z-index: 1000;
+
+    &-nextBtn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        bottom: 118px;
+        width: 57px;
+        height: 53px;
+        background-image: url("/image/next_btn.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: transparent;
+        cursor: pointer;
+        transition: 0.5s ease;
+        z-index: 2000;
+    }
+    &-nextBtn:hover {
+        background-image: url("/image/next_btn_hover.png");
+    }
+    &-1 {
+        position: absolute;
+        top: 44px;
+        left: 20px;
+    }
+    &-2 {
+        position: absolute;
+        top: 44px;
+        left: 94px;
+    }
+    &-3 {
+        position: absolute;
+        top: 116px;
+        left: 20px;
+    }
+    &-4 {
+        position: absolute;
+        top: 116px;
+        left: 94px;
+    }
 }
 
 .map1 {

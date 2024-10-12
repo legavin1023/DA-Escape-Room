@@ -1,5 +1,101 @@
 <template>
   <div class="page map3">
+    <div class="modal_box_1">
+      <!-- 첫 번째 모달 -->
+      <div v-if="activeModal === 1" class="modal">
+        <div class="modal-content modal_3_1">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeModal()
+                displayText('창문에서 찬 바람이 조금 새어 들어온다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+    <!-- 두 번째 모달 -->
+    <div v-if="activeModal === 2" class="modal">
+      <div class="modal-content modal_3_2_1">
+        <button
+          @click="
+            openNestedModal(2),
+              displayText('장미가 덩그러니 놓여있다. 소중히 보관한 듯 잘 말라 있다.')
+          "
+        ></button>
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('창문에서 찬 바람이 조금 새어 들어온다.')
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
+    <div class="modal_box_2">
+      <!-- 두 번째 모달 안의 모달 -->
+      <div v-if="activeNestedModal2" class="modal">
+        <div class="modal-content modal_3_2_2">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeNestedModal2()
+                displayText('창문에서 찬 바람이 조금 새어 들어온다.')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 세 번째 모달 -->
+    <div v-if="activeModal === 3" class="modal">
+      <div class="modal-content modal_3_3_1">
+        <button
+          @click="
+            openNestedModal(3), displayText('방을 비추는 거울이다. 내 모습을… 비추고 싶지 않다.')
+          "
+        ></button>
+        <span
+          class="close"
+          @click="
+            (event) => {
+              closeModal()
+              displayText('창문에서 찬 바람이 조금 새어 들어온다.')
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
+    <div class="modal_box_3">
+      <!-- 세 번째 모달 안의 모달 -->
+      <div v-if="activeNestedModal3" class="modal">
+        <div class="modal-content modal_3_3_2">
+          <span
+            class="close"
+            @click="
+              (event) => {
+                closeNestedModal3()
+                displayText('그림자는 말이 없다. 아니, 말이 없는 건 나인가?')
+              }
+            "
+            >×</span
+          >
+          <p class="modal-content-get"><span>체크</span></p>
+        </div>
+      </div>
+    </div>
     <button
       class="page-3-1"
       @click="openModal(1), displayText('오래된 야영지가 보인다. 왠지 그리운 느낌이 든다.')"
@@ -36,102 +132,6 @@
     </div>
   </div>
 
-  <div class="modal_box_1">
-    <!-- 첫 번째 모달 -->
-    <div v-if="activeModal === 1" class="modal">
-      <div class="modal-content modal_3_1">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeModal()
-              displayText('창문에서 찬 바람이 조금 새어 들어온다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-  <!-- 두 번째 모달 -->
-  <div v-if="activeModal === 2" class="modal">
-    <div class="modal-content modal_3_2_1">
-      <button
-        @click="
-          openNestedModal(2),
-            displayText('장미가 덩그러니 놓여있다. 소중히 보관한 듯 잘 말라 있다.')
-        "
-      ></button>
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('창문에서 찬 바람이 조금 새어 들어온다.')
-          }
-        "
-        >×</span
-      >
-    </div>
-  </div>
-  <div class="modal_box_2">
-    <!-- 두 번째 모달 안의 모달 -->
-    <div v-if="activeNestedModal2" class="modal">
-      <div class="modal-content modal_3_2_2">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeNestedModal2()
-              displayText('창문에서 찬 바람이 조금 새어 들어온다.')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- 세 번째 모달 -->
-  <div v-if="activeModal === 3" class="modal">
-    <div class="modal-content modal_3_3_1">
-      <button
-        @click="
-          openNestedModal(3), displayText('방을 비추는 거울이다. 내 모습을… 비추고 싶지 않다.')
-        "
-      ></button>
-      <span
-        class="close"
-        @click="
-          (event) => {
-            closeModal()
-            displayText('창문에서 찬 바람이 조금 새어 들어온다.')
-          }
-        "
-        >×</span
-      >
-    </div>
-  </div>
-  <div class="modal_box_3">
-    <!-- 세 번째 모달 안의 모달 -->
-    <div v-if="activeNestedModal3" class="modal">
-      <div class="modal-content modal_3_3_2">
-        <span
-          class="close"
-          @click="
-            (event) => {
-              closeNestedModal3()
-              displayText('그림자는 말이 없다. 아니, 말이 없는 건 나인가?')
-            }
-          "
-          >×</span
-        >
-        <p class="modal-content-get"><span>체크</span></p>
-      </div>
-    </div>
-  </div>
   <audio
     ref="nextSound"
     src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"
