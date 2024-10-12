@@ -1,12 +1,14 @@
 const CACHE_NAME = 'DAimage';
 const urlsToCache = [
+    '/DA-Escape-Room/image/next_btn.png',
+    '/DA-Escape-Room/image/clue_ui.png',
+    '/DA-Escape-Room/image/arrow_back.png"',
     '/DA-Escape-Room/image/display_area.png',
     '/DA-Escape-Room/image/map1/background_1.png',
     '/DA-Escape-Room/image/map2/background_2.png',
     '/DA-Escape-Room/image/map3/background_3.png',
     '/DA-Escape-Room/image/map4/background_4.png',
-    '/DA-Escape-Room/image/next_btn.png',
-    '/DA-Escape-Room/image/clue_ui.png',
+    '/DA-Escape-Room/image/nugbug/display_area.png',
     '/DA-Escape-Room/image/map1/map_1_1.png',
     '/DA-Escape-Room/image/map1/map_1_2_1.png',
     '/DA-Escape-Room/image/map1/map_1_2_2.png',
@@ -21,7 +23,30 @@ const urlsToCache = [
     '/DA-Escape-Room/image/map3/map_3_2_1.png',
     '/DA-Escape-Room/image/map3/map_3_2_2.png',
     '/DA-Escape-Room/image/map3/map_3_3_1.png',
-    '/DA-Escape-Room/image/map3/map_3_3_2.png'
+    '/DA-Escape-Room/image/map3/map_3_3_2.png',
+    '/DA-Escape-Room/image/map1/bonfire.png',
+    '/DA-Escape-Room/image/map1/light_1.png',
+    '/DA-Escape-Room/image/map1/light_2.png',
+    '/DA-Escape-Room/image/map1/bone.png',
+    '/DA-Escape-Room/image/map1/lock.png"',
+    '/DA-Escape-Room/image/map1/화살움직.png',
+    '/DA-Escape-Room/image/map1/화살고정.png',
+    '/DA-Escape-Room/image/map1/frame_light.png',
+    '/DA-Escape-Room/image/map2/candle.png',
+    '/DA-Escape-Room/image/map2/logo.png',
+    '/DA-Escape-Room/image/map2/crow.png"',
+    '/DA-Escape-Room/image/map2/map.png',
+    '/DA-Escape-Room/image/map3/shadow2.png',
+    '/DA-Escape-Room/image/map3/shadow1.png"',
+    '/DA-Escape-Room/image/map3/camp_light.png',
+    '/DA-Escape-Room/image/map4/formBox.png',
+    '/DA-Escape-Room/image/map4/textInput.png',
+    '/DA-Escape-Room/image/outro/모리건.png',
+    '/DA-Escape-Room/image/outro/text_1.png',
+    '/DA-Escape-Room/image/outro/text_2.png',
+    '/DA-Escape-Room/image/nugbug/logo.png'
+
+
 ];
 
 // 설치 이벤트에서 캐시하기
