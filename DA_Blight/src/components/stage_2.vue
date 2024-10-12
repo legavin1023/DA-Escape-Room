@@ -184,7 +184,7 @@
   ></audio>
   <audio
     ref="logoSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/Dragon Age Origins - Main Theme 편집2.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_2/daOrigin.mp3"
   ></audio>
   <audio
     ref="candleSound"

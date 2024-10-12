@@ -1,6 +1,9 @@
 const CACHE_NAME = 'v1';
 const urlsToCache = [
     '/image/map1/background_1.png',
+    '/image/map2/background_2.png',
+    '/image/map3/background_3.png',
+    '/image/map4/background_4.png',
     '/image/next_btn.png',
     '/image/clue_ui.png',
     '/image/map1/map_1_1.png',
@@ -19,7 +22,14 @@ const urlsToCache = [
     '/image/map3/map_3_3_1.png',
     '/image/map3/map_3_3_2.png'
 ];
+urlsToCache.forEach(url => {
+    console.log(`Attempting to cache: ${url}`);
+});
 
+cache.addAll(urlsToCache)
+    .catch(error => {
+        console.error('Failed to cache:', error);
+}); 
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
