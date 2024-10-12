@@ -1,5 +1,6 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'DAimage';
 const urlsToCache = [
+    '/imagedisplay_area.png',
     '/image/map1/background_1.png',
     '/image/map2/background_2.png',
     '/image/map3/background_3.png',
@@ -22,25 +23,18 @@ const urlsToCache = [
     '/image/map3/map_3_3_1.png',
     '/image/map3/map_3_3_2.png'
 ];
-urlsToCache.forEach(url => {
-    console.log(`Attempting to cache: ${url}`);
-});
 
-cache.addAll(urlsToCache)
-    .catch(error => {
-        console.error('Failed to cache:', error);
-}); 
+// 설치 이벤트에서 캐시하기
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('ImageLoad').then((cache) => {
-             console.log('Caching files:', urlsToCache);
+        caches.open(CACHE_NAME).then((cache) => {
+            console.log('Caching files:', urlsToCache);
             return cache.addAll(urlsToCache);
         })
     );
 });
 
-
-
+// 활성화 이벤트에서 오래된 캐시 삭제
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -54,11 +48,13 @@ self.addEventListener('activate', (event) => {
             );
         })
     );
-});self.addEventListener('fetch', event => {
+});
+
+// 요청 이벤트에서 캐시된 파일 반환
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                return response || fetch(event.request);
-            })
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request);
+        })
     );
 });
