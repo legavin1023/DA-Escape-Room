@@ -22,7 +22,7 @@
     ></button>
     <button
       class="page-2-4 candle"
-      @click="openModal(4), displayText('거의 다 닳아 있는 초.금방 꺼질 것만 같다.')"
+      @click="openModal(4), displayText('거의 다 닳아 있는 초. 금방 꺼질 것만 같다.')"
     ></button>
     <div class="narration">
       <div class="narration-border">
@@ -92,7 +92,7 @@
   <div v-if="activeModal === 2" class="modal">
     <div class="modal-content modal_2_2_1">
       <button
-        @click="openNestedModal(2), displayText('잘 보관된 인형이다.왠지 섬뜩하다.')"
+        @click="openNestedModal(2), displayText('잘 보관된 인형이다. 왠지 섬뜩하다.')"
       ></button>
       <span
         class="close"

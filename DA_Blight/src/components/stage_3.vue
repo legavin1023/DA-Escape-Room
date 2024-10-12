@@ -2,7 +2,7 @@
   <div class="page map3">
     <button
       class="page-3-1"
-      @click="openModal(1), displayText('오래된 야영지가 보인다.왠지 그리운 느낌이 든다.')"
+      @click="openModal(1), displayText('오래된 야영지가 보인다. 왠지 그리운 느낌이 든다.')"
     ></button>
     <button
       class="page-3-2"
@@ -10,7 +10,7 @@
     ></button>
     <button
       class="page-3-3"
-      @click="openModal(3), displayText('그림자는 말이 없다.아니, 말이 없는 건 나인가?')"
+      @click="openModal(3), displayText('그림자는 말이 없다. 아니, 말이 없는 건 나인가?')"
     ></button>
     <div class="narration">
       <div class="narration-border">
@@ -59,7 +59,8 @@
     <div class="modal-content modal_3_2_1">
       <button
         @click="
-          openNestedModal(2), displayText('장미가 덩그러니 놓여있다.소중히 보관한 듯 잘 말라 있다.')
+          openNestedModal(2),
+            displayText('장미가 덩그러니 놓여있다. 소중히 보관한 듯 잘 말라 있다.')
         "
       ></button>
       <span
@@ -98,7 +99,7 @@
     <div class="modal-content modal_3_3_1">
       <button
         @click="
-          openNestedModal(3), displayText('방을 비추는 거울이다.내 모습을… 비추고 싶지 않다.')
+          openNestedModal(3), displayText('방을 비추는 거울이다. 내 모습을… 비추고 싶지 않다.')
         "
       ></button>
       <span
@@ -122,7 +123,7 @@
           @click="
             (event) => {
               closeNestedModal3()
-              displayText('그림자는 말이 없다.아니, 말이 없는 건 나인가?')
+              displayText('그림자는 말이 없다. 아니, 말이 없는 건 나인가?')
             }
           "
           >×</span

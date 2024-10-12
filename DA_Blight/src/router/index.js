@@ -34,14 +34,14 @@ const router = createRouter({
       component: () => import('@/components/stage_4.vue'),
     },
     {
-      path: '/ending',
-      name: 'ending',
-      component: () => import('@/components/ending.vue'),
-    },
-    {
       path: '/outro',
       name: 'outro',
       component: () => import('@/components/outro.vue'),
+    },
+    {
+      path: '/nugbug',
+      name: 'nugbug',
+      component: () => import('@/components/nugbug.vue'),
     },
   ],
 });
