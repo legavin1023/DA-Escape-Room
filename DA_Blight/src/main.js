@@ -7,6 +7,19 @@ import router from './router'
 
 const app = createApp(App)
 
+//서비스워커로 이미지 미리다운
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+    });
+}
+
 app.use(router)
 // 오디오 객체를 생성하고 전역 속성에 등록
 app.config.globalProperties.$audio = new Audio("https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav");
