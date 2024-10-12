@@ -202,8 +202,8 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import offImage from '@/assets/image/off.png'
-import onImage from '@/assets/image/on.png'
+import offImage from '/image/off.png'
+import onImage from '/image/on.png'
 
 export default {
   mounted() {
