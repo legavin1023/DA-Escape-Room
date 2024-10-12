@@ -160,7 +160,7 @@ body {
     font-family: "GabiaNull-Regular";
     font-size: 20px;
     line-height: 30px;
-    z-index: 500;
+    z-index: 300;
 
     &-border {
         width: 885px;
@@ -201,7 +201,7 @@ body {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
-    z-index: 550;
+    z-index: 1000;
 
     &-nextBtn {
         display: block;
@@ -216,7 +216,6 @@ body {
         color: transparent;
         cursor: pointer;
         transition: 0.5s ease;
-        z-index: 1000;
     }
     &-nextBtn:hover {
         background-image: url("/image/next_btn_hover.png");
