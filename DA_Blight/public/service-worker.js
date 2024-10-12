@@ -29,12 +29,22 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Caching files:', urlsToCache);
-            return cache.addAll(urlsToCache).catch((error) => {
-                console.error('Cache addAll failed:', error);
-            });
+            return Promise.all(urlsToCache.map(url => {
+                return fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Network response was not ok for ${url}`);
+                        }
+                        return cache.add(url); // Cache the response
+                    })
+                    .catch(error => {
+                        console.error(`Failed to cache: ${url}`, error);
+                    });
+            }));
         })
     );
 });
+
 // 활성화 이벤트에서 오래된 캐시 삭제
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [CACHE_NAME];
