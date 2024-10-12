@@ -29,11 +29,12 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Caching files:', urlsToCache);
-            return cache.addAll(urlsToCache);
+            return cache.addAll(urlsToCache).catch((error) => {
+                console.error('Cache addAll failed:', error);
+            });
         })
     );
 });
-
 // 활성화 이벤트에서 오래된 캐시 삭제
 self.addEventListener('activate', (event) => {
     event.waitUntil(
@@ -54,7 +55,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
+            if (response) {
+                return response; // 캐시에서 응답
+            }
+            return fetch(event.request).catch((error) => {
+                console.error('Fetching failed:', error);
+            });
         })
     );
 });
