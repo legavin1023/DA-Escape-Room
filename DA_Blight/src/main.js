@@ -10,7 +10,8 @@ const app = createApp(App)
 //서비스워커로 이미지 미리다운
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker
+            .register('/service-worker.js')  // 루트 디렉토리에서의 경로
             .then(registration => {
                 console.log('Service Worker registered with scope:', registration.scope);
             })
