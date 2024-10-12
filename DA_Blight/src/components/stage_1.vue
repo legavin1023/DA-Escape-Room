@@ -67,7 +67,7 @@
           @click="
             openNestedModal(3),
               displayText(
-                '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되서 알아보기 어렵다.'
+                '그리고 이건… 무언가 수놓아진 손수건이다. 회색감시자의 상징인가? 훼손되어서 알아보기 어렵다.'
               )
           "
         ></button>
@@ -379,13 +379,15 @@ export default {
     const handleAnimation = (selector, animationClass, delay) => {
       const element = document.querySelector(selector)
       if (element) {
-        element.classList.add(animationClass)
         setTimeout(() => {
-          element.classList.remove(animationClass)
-        }, delay)
+          // 지연을 두어 애니메이션을 시작
+          element.classList.add(animationClass)
+          setTimeout(() => {
+            element.classList.remove(animationClass)
+          }, delay)
+        }, 10) // 10ms의 지연
       }
     }
-
     const click_light_btn_1 = () => {
       playSound(lightSound)
       handleAnimation('.light_1', 'light_hidden', 600)

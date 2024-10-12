@@ -96,7 +96,9 @@
       class="page-2-1"
       @click="
         openModal(1),
-          displayText('두 사람이 누울 수 있는 침대. 잘 정리되어 있다.마치 아무 일도 없었던 것처럼.')
+          displayText(
+            '두 사람이 누울 수 있는 침대. 잘 정리되어 있다. 마치 아무 일도 없었던 것처럼.'
+          )
       "
     ></button>
     <button
@@ -327,10 +329,13 @@ export default {
     const handleAnimation = (selector, animationClass, delay) => {
       const element = document.querySelector(selector)
       if (element) {
-        element.classList.add(animationClass)
         setTimeout(() => {
-          element.classList.remove(animationClass)
-        }, delay)
+          // 지연을 두어 애니메이션을 시작
+          element.classList.add(animationClass)
+          setTimeout(() => {
+            element.classList.remove(animationClass)
+          }, delay)
+        }, 10) // 10ms의 지연
       }
     }
 
@@ -346,7 +351,7 @@ export default {
 
     const click_crow_btn = () => {
       playSound(crowSound)
-      handleAnimation('.crow_btn', 'crwow_move', 2500)
+      handleAnimation('.crow_btn', 'crwow_move', 1500)
     }
 
     //-------------------------------------------------------------

@@ -48,7 +48,7 @@
             @click="
               (event) => {
                 closeNestedModal2()
-                displayText('창문에서 찬 바람이 조금 새어 들어온다.')
+                displayText('난 나와 네 선택을 믿어')
               }
             "
             >×</span

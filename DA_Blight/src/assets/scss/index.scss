@@ -40,6 +40,30 @@ body {
     align-items: center;
     flex-direction: column;
 }
+.mobile-warning {
+    display: flex;
+    justify-content: center;
+    p {
+        line-height: 30px;
+        font-size: 18px;
+        text-align: center;
+        color: #b3b3b3;
+        span {
+            color: #fe8311;
+        }
+    }
+    .logo {
+        position: absolute;
+        bottom: 60px;
+        display: block;
+        background: url("/image/nugbug/logo.png");
+        background-repeat: no-repeat;
+        width: 143px;
+        height: 30px;
+        text-indent: -9999px;
+        text-align: center;
+    }
+}
 .sound {
     padding: 5px;
     display: flex;
@@ -171,7 +195,7 @@ body {
         0% {
             opacity: 0;
         }
-        60% {
+        80% {
             opacity: 0;
         }
         100% {
@@ -182,7 +206,7 @@ body {
         display: inline-block;
         padding: 20px 54px 0 54px;
         opacity: 0;
-        transition: opacity_text 0.4s ease; /* 애니메이션 효과 */
+        transition: opacity_text 0.8s ease; /* 애니메이션 효과 */
         color: #9f9f9f;
         font-size: 20px;
         letter-spacing: -1px;
@@ -254,6 +278,7 @@ body {
         background-size: cover;
         color: transparent;
         z-index: 20;
+        text-indent: -9999px;
         cursor: pointer;
     }
     .modal_1_1 {
@@ -911,6 +936,7 @@ body.modal-open {
             font-family: "Pretendard";
             line-height: 27px;
             border-radius: 15px;
+            transition: 0.5s ease-in-out;
             span {
                 display: inline-block;
                 text-indent: -9999px;
@@ -931,6 +957,7 @@ body.modal-open {
                 cursor: not-allowed; /* 커서를 "사용할 수 없음"으로 변경 */
             }
             &:hover {
+                //홍게
             }
         }
     }
@@ -1025,6 +1052,11 @@ body.modal-open {
             height: 30px;
             text-indent: -9999px;
             text-align: center;
+            opacity: 1;
+            transition: 0.5s ease-in-out;
+        }
+        .logo:hover {
+            opacity: 0.6;
         }
         .licenses {
             margin-top: 20px;

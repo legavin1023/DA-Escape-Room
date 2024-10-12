@@ -69,7 +69,11 @@ export default {
     }
 
     const textSubmit = () => {
-      if (nameInput.value === '알리스터') {
+      if (
+        nameInput.value === '알리스터' ||
+        nameInput.value === 'Alistair' ||
+        nameInput.value === 'alistair'
+      ) {
         playSound(openSound)
         showError.value = false // 올바른 경우, 에러 메시지 숨김
         displayedText.value = '그래, 이제 다 끝났어.' // 올바른 이름 입력 시 메시지 변경
