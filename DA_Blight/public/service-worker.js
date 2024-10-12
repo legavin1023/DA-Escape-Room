@@ -89,3 +89,8 @@ urlsToCache.forEach((url) => {
             console.error(`Failed to cache: ${url}`, error);
         });
 });
+urlsToCache.forEach(url => {
+    
+   
+console.log(`캐싱 시도 중: ${url}`);
+});
