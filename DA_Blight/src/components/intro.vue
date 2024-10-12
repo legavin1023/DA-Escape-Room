@@ -120,8 +120,7 @@ export default {
       displayedText,
       isVisible,
       playSound,
-      nextSound,
-      preloadImages
+      nextSound
     }
   }
 }
