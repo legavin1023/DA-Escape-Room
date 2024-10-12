@@ -201,7 +201,7 @@ body {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat; /* no-repeat을 별도로 설정 */
-    z-index: 200;
+    z-index: 550;
 
     &-nextBtn {
         display: block;
@@ -214,7 +214,6 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
-        z-index: 550;
         cursor: pointer;
         transition: 0.5s ease;
     }
