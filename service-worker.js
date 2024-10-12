@@ -1,6 +1,6 @@
 const CACHE_NAME = 'DAimage';
 const urlsToCache = [
-    '/imagedisplay_area.png',
+    '/image/display_area.png',
     '/image/map1/background_1.png',
     '/image/map2/background_2.png',
     '/image/map3/background_3.png',
@@ -37,13 +37,13 @@ self.addEventListener('install', (event) => {
 });
 // 활성화 이벤트에서 오래된 캐시 삭제
 self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
-                cacheNames.map((name) => {
-                    if (name !== CACHE_NAME) {
-                        console.log('Deleting old cache:', name);
-                        return caches.delete(name);
+                cacheNames.map((cacheName) => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        return caches.delete(cacheName);
                     }
                 })
             );
@@ -63,4 +63,19 @@ self.addEventListener('fetch', (event) => {
             });
         })
     );
+});
+urlsToCache.forEach((url) => {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response;
+        })
+        .then(response => {
+            console.log(`Successfully cached: ${url}`);
+        })
+        .catch(error => {
+            console.error(`Failed to cache: ${url}`, error);
+        });
 });
