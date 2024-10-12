@@ -47,7 +47,12 @@ export default {
       isVisible.value = true // 처음에 visible 설정
       typeText(texts[currentTextIndex.value])
     })
-
+    const preloadImages = (imagePaths) => {
+      imagePaths.forEach((path) => {
+        const img = new Image()
+        img.src = path
+      })
+    }
     const goNext = () => {
       // 다음 문장으로 이동
       if (currentTextIndex.value < texts.length - 1) {
@@ -82,6 +87,30 @@ export default {
           sound.value.currentTime = 0 // 시작 시간 초기화
         }
       }
+      const imagesToPreload = [
+        require('@/assets/image/map1/background_1.png'),
+        require('@/assets/image/next_btn.png'),
+        require('@/assets/image/clue_ui.png'),
+
+        require('@/assets/image/map1/map_1_1.png'),
+        require('@/assets/image/map1/map_1_2_1.png'),
+        require('@/assets/image/map1/map_1_2_2.png'),
+        require('@/assets/image/map1/map_1_3_1.png'),
+        require('@/assets/image/map1/map_1_3_2.png'),
+        require('@/assets/image/map2/map_2_1.png"'),
+        require('@/assets/image/map2/map_2_2_1.png'),
+        require('@/assets/image/map2/map_2_2_2.png'),
+        require('@/assets/image/map2/map_2_3.png'),
+        require('@/assets/image/map2/map_2_4.png'),
+        require('@/assets/image/map3/map_3_1.png'),
+        require('@/assets/image/map3/map_3_2_1.png'),
+        require('@/assets/image/map3/map_3_2_2.png'),
+        require('@/assets/image/map3/map_3_3_1.png'),
+        require('@/assets/image/map3/map_3_3_2.png')
+      ]
+      window.addEventListener('load', () => {
+        preloadImages(imagesToPreload)
+      })
     }
     return {
       showBtn,
@@ -90,7 +119,8 @@ export default {
       displayedText,
       isVisible,
       playSound,
-      nextSound
+      nextSound,
+      preloadImages
     }
   }
 }
