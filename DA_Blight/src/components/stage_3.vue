@@ -48,7 +48,7 @@
             @click="
               (event) => {
                 closeNestedModal2()
-                displayText('난 나와 네 선택을 믿어')
+                displayText('“난 나와 네 선택을 믿어”')
               }
             "
             >×</span
