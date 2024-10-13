@@ -15,7 +15,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    // 페이지에 진입하면 오디오 재생
+    this.$poteto.play().catch((error) => {
+      console.error('오디오 재생 오류:', error)
+    })
+  }
+}
 </script>
 
 <style></style>

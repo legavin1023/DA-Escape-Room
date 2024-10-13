@@ -25,6 +25,7 @@ if ('serviceWorker' in navigator) {
 app.use(router)
 // 오디오 객체를 생성하고 전역 속성에 등록
 app.config.globalProperties.$audio = new Audio("https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav");
+app.config.globalProperties.$poteto = new Audio("https://legavin1023.github.io/DA-Escape-Room/sound/빵파레.mp3");
 
 
 app.mount('#app')

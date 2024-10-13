@@ -31,6 +31,9 @@ export default {
       if (newRoute.name === 'intro') {
         isPlaying.value = true // 음악을 무조건 재생 상태로 설정
         showMusic.value = true // music 컴포넌트도 보여줌
+      } else if (newRoute.name === 'nugbug') {
+        isPlaying.value = false // 음악을 무조건 재생 상태로 설정
+        showMusic.value = false // music 컴포넌트도 보여줌
       }
     })
 
