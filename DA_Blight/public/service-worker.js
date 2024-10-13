@@ -41,6 +41,8 @@ const urlsToCache = [
     '/DA-Escape-Room/image/map3/camp_light.png',
     '/DA-Escape-Room/image/map4/formBox.png',
     '/DA-Escape-Room/image/map4/textInput.png',
+    '/DA-Escape-Room/image/map4/이스터.png',
+    '/DA-Escape-Room/image/map4/close.png',
     '/DA-Escape-Room/image/outro/모리건.png',
     '/DA-Escape-Room/image/outro/text_1.png',
     '/DA-Escape-Room/image/outro/text_2.png',
@@ -117,5 +119,5 @@ urlsToCache.forEach((url) => {
 urlsToCache.forEach(url => {
     
    
-console.log(`캐싱 시도 중: ${url}`);
+// console.log(`캐싱 시도 중: ${url}`);
 });
