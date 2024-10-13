@@ -9,7 +9,7 @@
 
 <script>
 import music from '@/views/music.vue'
-import { ref, provide, watch } from 'vue'
+import { ref, provide, watch, getCurrentInstance } from 'vue'
 import { useRoute } from 'vue-router'
 
 export default {
@@ -25,7 +25,7 @@ export default {
 
     // 현재 라우트 정보 가져오기
     const route = useRoute()
-
+    const instance = getCurrentInstance() // 현재 인스턴스 가져오기
     // 특정 라우트로 이동할 때 음악 자동 재생
     watch(route, (newRoute) => {
       if (newRoute.name === 'intro') {
@@ -34,6 +34,10 @@ export default {
       } else if (newRoute.name === 'nugbug') {
         isPlaying.value = false // 음악을 무조건 재생 상태로 설정
         showMusic.value = false // music 컴포넌트도 보여줌
+        instance.appContext.config.globalProperties.$poteto.play().catch((error) => {
+          console.error('오디오 재생 오류:', error)
+        })
+        showMusic.value = true // music 컴포넌트 보여줌
       }
     })
 
