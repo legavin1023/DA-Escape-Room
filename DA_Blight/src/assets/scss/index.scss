@@ -961,6 +961,34 @@ body.modal-open {
             }
         }
     }
+    .poteto {
+        display: block;
+        width: 900px;
+        height: 600px;
+        background-repeat: no-repeat;
+        display: flex;
+        z-index: 100;
+        &-box {
+            display: block;
+            width: 900px;
+            height: 600px;
+            background: url("/image/map4/이스터.png");
+            .closePoteto {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                display: block;
+                background: url("/image/map4/close.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                text-indent: -9999px;
+                color: transparent;
+                width: 60px;
+                height: 60px;
+                cursor: pointer;
+            }
+        }
+    }
 }
 .outro {
     animation: fadeIn 2s ease-in-out;

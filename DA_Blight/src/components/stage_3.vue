@@ -150,11 +150,11 @@
   ></audio>
   <audio
     ref="breathSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/남성한숨.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/한숨_남자.mp3"
   ></audio>
   <audio
     ref="sighSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/여자한숨.mp3"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_3/한숨_여자.mp3"
   ></audio>
 </template>
 

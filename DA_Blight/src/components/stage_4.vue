@@ -13,7 +13,21 @@
         </p>
       </div>
     </div>
+    <div v-if="poteto === true" class="modal poteto">
+      <div class="poteto-box">
+        <span
+          class="closePoteto"
+          @click="
+            (event) => {
+              closeModal()
+            }
+          "
+          >×</span
+        >
+      </div>
+    </div>
   </div>
+
   <audio
     ref="nextSound"
     src="https://legavin1023.github.io/DA-Escape-Room/sound/페이지넘김.wav"
@@ -26,6 +40,10 @@
     ref="openSound"
     src="https://legavin1023.github.io/DA-Escape-Room/sound/map_4/문열림.mp3"
   ></audio>
+  <audio
+    ref="potetoSound"
+    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_4/빵파레.mp3"
+  ></audio>
 </template>
 
 <script>
@@ -37,6 +55,8 @@ export default {
     const nextSound = ref(null)
     const closeSound = ref(null)
     const openSound = ref(null)
+    const potetoSound = ref(null)
+    const poteto = ref(null)
     const router = useRouter() // Router instance 가져오기
     const typingName = ref(false)
     const nameInput = ref('') // 입력값을 저장할 변수
@@ -81,13 +101,20 @@ export default {
         setTimeout(() => {
           router.push('/outro') // 1초 후 페이지 이동
         }, 1000)
+      } else if (nameInput.value === '감자') {
+        poteto.value = true
+        playSound(potetoSound)
+        showError.value = true // 틀린 경우, 에러 메시지 표시
+        displayText(errorMessage, false) // 틀린 이름 입력 시 에러 메시지 변경
       } else {
         playSound(closeSound)
         showError.value = true // 틀린 경우, 에러 메시지 표시
         displayText(errorMessage, false) // 틀린 이름 입력 시 에러 메시지 변경
       }
     }
-
+    const closeModal = () => {
+      poteto.value = false
+    }
     onMounted(() => {
       displayText(defaultText, false) // 한 글자씩 타이핑 애니메이션 시작
     })
@@ -159,7 +186,10 @@ export default {
       nextSound,
       closeSound,
       openSound,
-      playSound
+      playSound,
+      potetoSound,
+      poteto,
+      closeModal
     }
   },
   mounted() {
