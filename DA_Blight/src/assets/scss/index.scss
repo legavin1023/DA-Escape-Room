@@ -957,7 +957,7 @@ body.modal-open {
                 cursor: not-allowed; /* 커서를 "사용할 수 없음"으로 변경 */
             }
             &:hover {
-                //홍게
+                background-color: #ee7a10;
             }
         }
     }
@@ -1044,7 +1044,7 @@ body.modal-open {
             letter-spacing: 10px;
         }
         .logo {
-            margin: 140px auto 0;
+            margin: 120px auto 0;
             display: block;
             background: url("/image/nugbug/logo.png");
             background-repeat: no-repeat;
