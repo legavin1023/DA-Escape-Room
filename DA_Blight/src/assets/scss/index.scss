@@ -129,6 +129,7 @@ body {
     flex-direction: column;
 }
 .main {
+    animation: fadeIn 2s ease-in-out;
     background-image: url("/image/intro/display_area.png");
     background-repeat: no-repeat;
     .noise {
@@ -288,6 +289,7 @@ body {
     }
 }
 .intro {
+    animation: fadeIn 2s ease-in-out;
     font-family: "GabiaNull-Regular";
     font-size: 20px;
     line-height: 30px;
