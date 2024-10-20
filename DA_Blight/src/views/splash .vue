@@ -7,39 +7,38 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import gifler from 'gifler' // 이 방식이 작동하지 않는 경우:
+import 'gifler'
+
 export default {
   setup() {
     const canvas = ref(null)
     const router = useRouter()
 
     const renderGif = () => {
-      const ctx = canvas.value.getContext('2d')
+      const ctx = canvas.value.getContext('2d') // ctx 사용
+      if (!ctx) {
+        console.error('Canvas context is null.')
+        return
+      }
 
-      gifler('/DA-Escape-Room/image/splash/Master_final.gif').get((aGif) => {
+      gifler('/image/splash/Master_final.gif').get((aGif) => {
+        // GIF 애니메이션을 캔버스에 그립니다.
         aGif.animateInCanvas(canvas.value, {
           done: () => {
-            // GIF가 끝났을 때 이동할 라우트
-            router.push({ name: 'main' })
+            router.push({ name: 'main' }) // GIF가 끝났을 때 이동할 라우트
           }
         })
       })
     }
 
     onMounted(() => {
-      renderGif()
+      renderGif() // renderGif 함수 호출
     })
+
     return {
-      renderGif
+      renderGif,
+      canvas
     }
   }
 }
 </script>
-
-<style scoped>
-/* 캔버스 크기 조정 */
-canvas {
-  width: 100%;
-  height: auto;
-}
-</style>
