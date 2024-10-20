@@ -22,16 +22,18 @@ export default {
       }
 
       gifler(
-        'https://legavin1023.github.io/DA-Escape-Room/image/splash/Master_final_once2.gif'
+        'https://legavin1023.github.io/DA-Escape-Room/image/splash/Master_final_once3.gif'
       ).get((aGif) => {
         // GIF 애니메이션을 캔버스에 그립니다.
         aGif.animateInCanvas(canvas.value, {
-          loop: false, // 반복하지 않음
-          done: () => {
-            router.push({ name: 'main' }) // GIF가 끝났을 때 이동할 라우트
-          }
+          loop: false // 반복하지 않음
         })
       })
+
+      // 4.5초 후에 main 페이지로 이동
+      setTimeout(() => {
+        router.push({ name: 'main' })
+      }, 4800)
     }
 
     onMounted(() => {
