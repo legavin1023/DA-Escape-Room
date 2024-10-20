@@ -5,7 +5,7 @@ const urlsToCache = [
     '/DA-Escape-Room/image/arrow_back.png',
     '/DA-Escape-Room/image/intro/display_area.png',
     '/DA-Escape-Room/image/intro/intro.png',
-    '/DA-Escape-Room/image/intro/nois.jpg',
+    '/DA-Escape-Room/image/intro/noise.jpg',
     '/DA-Escape-Room/image/map1/background_1.png',
     '/DA-Escape-Room/image/map2/background_2.png',
     '/DA-Escape-Room/image/map3/background_3.png',
