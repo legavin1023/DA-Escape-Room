@@ -2,10 +2,7 @@
   <div>
     <canvas ref="canvas" width="500" height="500"></canvas>
   </div>
-  <audio
-    ref="potetoSound"
-    src="https://legavin1023.github.io/DA-Escape-Room/sound/map_4/빵파레.mp3"
-  ></audio>
+
 </template>
 
 <script>
@@ -25,7 +22,7 @@ export default {
         return
       }
 
-      gifler('/image/splash/Master_final.gif').get((aGif) => {
+      gifler('/image/splash/Master_final_once2.gif').get((aGif) => {
         // GIF 애니메이션을 캔버스에 그립니다.
         aGif.animateInCanvas(canvas.value, {
           loop: false, // 반복하지 않음
@@ -48,10 +45,3 @@ export default {
 }
 </script>
 
-<style scoped>
-/* 캔버스 크기 조정 */
-canvas {
-  width: 100%;
-  height: auto;
-}
-</style>
