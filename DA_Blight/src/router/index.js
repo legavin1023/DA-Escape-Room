@@ -3,8 +3,13 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL), // 해시 모드로 변경
   routes: [
-    {
+     {
       path: '/',
+      name: 'splash ',
+      component: () => import('@/views/splash .vue'),
+    },
+    {
+      path: '/main',
       name: 'main',
       component: () => import('@/views/main.vue'),
     },
