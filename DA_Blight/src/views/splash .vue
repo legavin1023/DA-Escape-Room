@@ -2,7 +2,6 @@
   <div>
     <canvas ref="canvas" width="500" height="500"></canvas>
   </div>
-
 </template>
 
 <script>
@@ -22,7 +21,9 @@ export default {
         return
       }
 
-      gifler('/image/splash/Master_final_once2.gif').get((aGif) => {
+      gifler(
+        'https://legavin1023.github.io/DA-Escape-Room/image/splash/Master_final_once2.gif'
+      ).get((aGif) => {
         // GIF 애니메이션을 캔버스에 그립니다.
         aGif.animateInCanvas(canvas.value, {
           loop: false, // 반복하지 않음
@@ -44,4 +45,3 @@ export default {
   }
 }
 </script>
-
